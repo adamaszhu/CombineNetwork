@@ -12,7 +12,7 @@ s.author = { "Adamas Zhu" => "developer@adamaszhu.com",
 s.homepage = "https://github.com/adamaszhu/CombineNetwork"
 s.source = { :git => "https://github.com/adamaszhu/CombineNetwork.git",
 :tag => "#{s.version}" }
-s.source_files = "CombineRx/**/*.{swift}"
+s.source_files = "CombineNetwork/**/*.{swift}"
 s.swift_version = "4.2"
 
 s.framework = "Foundation"
