@@ -72,3 +72,10 @@ extension Publishers.Sequence {
     
     // public func setFailureType<E>(to error: E.Type) -> Publishers.Sequence<Elements, E> where E : Error
 }
+
+extension Sequence {
+    
+    public var publisher: Publishers.Sequence<Self, Never> {
+        return Publishers.Sequence(sequence: self)
+    }
+}
