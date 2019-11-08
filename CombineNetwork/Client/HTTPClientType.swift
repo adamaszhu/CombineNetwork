@@ -1,0 +1,72 @@
+/// HTTPClientType.swift
+/// CombineNetwork
+///
+/// - author: Adamas Zhu
+/// - date: 8/11/19
+/// - copyright: Copyright © 2019 Adamas Zhu. All rights reserved.
+
+import CombineRx
+
+/// Define a HTTPClient
+public protocol HTTPClientType {
+    
+    /// Request an object
+    ///
+    /// - Parameters:
+    ///   - request: The URL request
+    ///   - businessErrorTypes: All types of BusinessError that should be detected
+    /// - Returns: An object publisher
+    func requestObject<Object: Decodable>(
+        with request: URLRequest,
+        promoting businessErrorTypes: [BusinessError.Type]) -> AnyPublisher<Object?, HTTPError>
+    
+    /// Request a list of objects
+    ///
+    /// - Parameters:
+    ///   - request: The URL request
+    ///   - businessErrorTypes: All types of BusinessError that should be detected
+    /// - Returns: An object list publisher
+    func requestObjects<Object: Decodable>(
+        with request: URLRequest,
+        promoting businessErrorTypes: [BusinessError.Type]) -> AnyPublisher<[Object]?, HTTPError>
+    
+    /// Request an object
+    ///
+    /// - Parameters:
+    ///   - url: The URL
+    ///   - method: The HTTP method
+    ///   - header: The HTTP header
+    ///   - parameters: The URL parameters
+    ///   - body: The request body
+    ///   - bodyType: The type of the request body
+    ///   - businessErrorTypes: All types of BusinessError that should be detected
+    /// - Returns: An object publisher
+    func requestObject<Object: Decodable>(
+        from url: URL,
+        using method: RequestMethod,
+        attaching header: RequestHeader?,
+        attaching parameters: URLParameters?,
+        with body: RequestBody?,
+        as bodyType: RequestBodyType?,
+        promoting businessErrorTypes: [BusinessError.Type]) -> AnyPublisher<Object?, HTTPError>
+    
+    /// Request a list of objects
+    ///
+    /// - Parameters:
+    ///   - url: The URL
+    ///   - method: The HTTP method
+    ///   - header: The HTTP header
+    ///   - parameters: The URL parameters
+    ///   - body: The request body
+    ///   - bodyType: The type of the request body
+    ///   - businessErrorTypes: All types of BusinessError that should be detected
+    /// - Returns: An object list publisher
+    func requestObjects<Object: Decodable>(
+        from url: URL,
+        using method: RequestMethod,
+        attaching header: RequestHeader?,
+        attaching parameters: URLParameters?,
+        with body: RequestBody?,
+        as bodyType: RequestBodyType?,
+        promoting businessErrorTypes: [BusinessError.Type]) -> AnyPublisher<[Object]?, HTTPError>
+}
