@@ -131,7 +131,7 @@ open class HTTPClient: HTTPClientType {
 }
 
 /// The response type of a HTTP request
-public typealias DataTaskResponse = Publishers.DataTaskPublisher.Output
+public typealias DataTaskResponse = URLSession.CombineDataTaskPublisher.Output
 
 
 
