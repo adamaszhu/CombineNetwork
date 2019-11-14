@@ -67,6 +67,16 @@ Publishers
 #### Sequence
 - [x] init
 - [x] map
+
+
+- [x] append(_ publisher: Publishers.Sequence<Elements, Failure>)
+- [x] append<S\>(_ elements: S)
+- [x] append(_ elements: Publishers.Sequence<Elements, Failure>.Output...)
+- [x] prepend(_ publisher: Publishers.Sequence<Elements, Failure>)
+- [x] prepend<S\>(_ elements: S)
+- [x] prepend(_ elements: Publishers.Sequence<Elements, Failure>.Output...)
+
+
 - [ ] allSatisfy
 - [ ] tryAllSatisfy
 - [ ] collect

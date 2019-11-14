@@ -1,5 +1,5 @@
 PODS:
-  - CombineRx (0.3.1):
+  - CombineRx (0.3.2):
     - RxCocoa (~> 5)
     - RxSwift (~> 5)
   - RxCocoa (5.0.1):
@@ -10,7 +10,7 @@ PODS:
   - RxSwift (5.0.1)
 
 DEPENDENCIES:
-  - CombineRx (~> 0.3.1)
+  - CombineRx (~> 0.3.2)
 
 SPEC REPOS:
   https://github.com/adamaszhu/CombineRxSpecs.git:
@@ -21,11 +21,11 @@ SPEC REPOS:
     - RxSwift
 
 SPEC CHECKSUMS:
-  CombineRx: 6ce993cde40df227f9723643abd17f3b382bae69
+  CombineRx: 56938eb6fb76e60f834017dae3c1a69397d5155a
   RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
   RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
   RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
 
-PODFILE CHECKSUM: 5ad139628efb878c29442c0cda11840713cdf1e4
+PODFILE CHECKSUM: b9beb691f5f12e329f219e190692595dd65ff888
 
 COCOAPODS: 1.7.5
