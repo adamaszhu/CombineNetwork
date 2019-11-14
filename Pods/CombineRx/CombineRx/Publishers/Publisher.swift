@@ -63,5 +63,37 @@ extension Publisher {
     public func subscribe<S>(_ subscriber: S) where S : Subscriber, Self.Failure == S.Failure, Self.Output == S.Input {
         receive(subscriber: subscriber)
     }
-}
 
+    /// Attaches a subscriber with closure-based behavior.
+    ///
+    /// This method creates the subscriber and immediately requests an unlimited number of values, prior to returning the subscriber.
+    /// - parameter receiveComplete: The closure to execute on completion.
+    /// - parameter receiveValue: The closure to execute on receipt of a value.
+    /// - Returns: A cancellable instance; used when you end assignment of the received value. Deallocation of the result will tear down the subscription stream.
+    public func sink(receiveCompletion: @escaping ((Subscribers.Completion<Self.Failure>) -> Void), receiveValue: @escaping ((Self.Output) -> Void)) -> AnyCancellable {
+        let sink = Subscribers.Sink(receiveCompletion: receiveCompletion, receiveValue: receiveValue)
+        receive(subscriber: sink)
+        return AnyCancellable(sink)
+    }
+
+    /// Specifies the scheduler on which to receive elements from the publisher.
+    ///
+    /// You use the `receive(on:options:)` operator to receive results on a specific scheduler, such as performing UI work on the main run loop.
+    /// In contrast with `subscribe(on:options:)`, which affects upstream messages, `receive(on:options:)` changes the execution context of downstream messages. In the following example, requests to `jsonPublisher` are performed on `backgroundQueue`, but elements received from it are performed on `RunLoop.main`.
+    ///
+    ///     let jsonPublisher = MyJSONLoaderPublisher() // Some publisher.
+    ///     let labelUpdater = MyLabelUpdateSubscriber() // Some subscriber that updates the UI.
+    ///
+    ///     jsonPublisher
+    ///         .subscribe(on: backgroundQueue)
+    ///         .receiveOn(on: RunLoop.main)
+    ///         .subscribe(labelUpdater)
+    ///
+    /// - Parameters:
+    ///   - scheduler: The scheduler the publisher is to use for element delivery.
+    ///   - options: Scheduler options that customize the element delivery.
+    /// - Returns: A publisher that delivers elements using the specified scheduler.
+    public func receive<S>(on scheduler: S, options: S.CombineSchedulerOptions? = nil) -> Publishers.ReceiveOn<Self, S> where S : Scheduler {
+        return Publishers.ReceiveOn(upstream: self, scheduler: scheduler, options: options)
+    }
+}

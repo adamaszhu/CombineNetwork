@@ -25,6 +25,10 @@ extension Publishers {
         public init(sequence: Elements) {
             observable = Observable.from(sequence)
         }
+
+        private init(observable: Observable<Elements.Element>) {
+            self.observable = observable
+        }
         
         fileprivate init<PreviousElements>(publisher: Publishers.Sequence<PreviousElements, Failure>, transform: @escaping (PreviousElements.Element) -> Elements.Element) {
             self.observable = publisher.observable.map(transform)
@@ -71,6 +75,51 @@ extension Publishers.Sequence {
     // public func scan<T>(_ initialResult: T, _ nextPartialResult: @escaping (T, Publishers.Sequence<Elements, Failure>.Output) -> T) -> Publishers.Sequence<[T], Failure>
     
     // public func setFailureType<E>(to error: E.Type) -> Publishers.Sequence<Elements, E> where E : Error
+}
+
+extension Publishers.Sequence where Elements : RangeReplaceableCollection {
+
+    public func prepend(_ elements: Publishers.Sequence<Elements, Failure>.Output...) -> Publishers.Sequence<Elements, Failure> {
+
+        if let sequence = elements as? Elements {
+            let publisher = Publishers.Sequence<Elements, Failure>(sequence: sequence)
+            return Publishers.Sequence<Elements, Failure>(observable: Observable.concat(publisher.observable, observable))
+        } else {
+            return self
+        }
+    }
+
+    public func prepend<S>(_ elements: S) -> Publishers.Sequence<Elements, Failure> where S : Sequence, Elements.Element == S.Element {
+
+        let publisher = Publishers.Sequence<S, Failure>(sequence: elements)
+        return Publishers.Sequence<Elements, Failure>(observable: Observable.concat(publisher.observable, observable))
+    }
+
+    public func prepend(_ publisher: Publishers.Sequence<Elements, Failure>) -> Publishers.Sequence<Elements, Failure> {
+
+        return Publishers.Sequence<Elements, Failure>(observable: Observable.concat(publisher.observable, observable))
+    }
+
+    public func append(_ elements: Publishers.Sequence<Elements, Failure>.Output...) -> Publishers.Sequence<Elements, Failure> {
+
+        if let sequence = elements as? Elements {
+            let publisher = Publishers.Sequence<Elements, Failure>(sequence: sequence)
+            return Publishers.Sequence<Elements, Failure>(observable: Observable.concat(observable, publisher.observable))
+        } else {
+            return self
+        }
+    }
+
+    public func append<S>(_ elements: S) -> Publishers.Sequence<Elements, Failure> where S : Sequence, Elements.Element == S.Element {
+
+        let publisher = Publishers.Sequence<S, Failure>(sequence: elements)
+        return Publishers.Sequence<Elements, Failure>(observable: Observable.concat(observable, publisher.observable))
+    }
+
+    public func append(_ publisher: Publishers.Sequence<Elements, Failure>) -> Publishers.Sequence<Elements, Failure> {
+
+        return Publishers.Sequence<Elements, Failure>(observable: Observable.concat(observable, publisher.observable))
+    }
 }
 
 extension Sequence {
