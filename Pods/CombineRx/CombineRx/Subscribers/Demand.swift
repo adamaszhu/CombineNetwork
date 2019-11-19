@@ -16,7 +16,7 @@ extension Subscribers {
     public struct Demand : Equatable, Comparable, Hashable, Codable {
         
         /// Requests as many values as the `Publisher` can produce.
-        // public static let unlimited: Subscribers.Demand
+         public static let unlimited: Subscribers.Demand = Subscribers.Demand()
         
         /// A demand for no items.
         ///
