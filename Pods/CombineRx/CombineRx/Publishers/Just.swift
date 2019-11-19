@@ -28,3 +28,82 @@ public struct Just<Output> : Publisher {
         observable = Observable.of(output)
     }
 }
+
+extension Just {
+
+    // public func allSatisfy(_ predicate: (Output) -> Bool) -> Just<Bool>
+
+    // public func tryAllSatisfy(_ predicate: (Output) throws -> Bool) -> Result<Bool, Error>.Publisher
+
+    // public func collect() -> Just<[Output]>
+
+    // public func compactMap<T>(_ transform: (Output) -> T?) -> Optional<T>.Publisher
+
+    // public func min(by areInIncreasingOrder: (Output, Output) -> Bool) -> Just<Output>
+
+    // public func max(by areInIncreasingOrder: (Output, Output) -> Bool) -> Just<Output>
+
+    // public func prepend(_ elements: Output...) -> Publishers.Sequence<[Output], Just<Output>.Failure>
+
+    // public func prepend<S>(_ elements: S) -> Publishers.Sequence<[Output], Just<Output>.Failure> where Output == S.Element, S : Sequence
+
+    // public func append(_ elements: Output...) -> Publishers.Sequence<[Output], Just<Output>.Failure>
+
+    // public func append<S>(_ elements: S) -> Publishers.Sequence<[Output], Just<Output>.Failure> where Output == S.Element, S : Sequence
+
+    // public func contains(where predicate: (Output) -> Bool) -> Just<Bool>
+
+    // public func tryContains(where predicate: (Output) throws -> Bool) -> Result<Bool, Error>.Publisher
+
+    // public func count() -> Just<Int>
+
+    // public func dropFirst(_ count: Int = 1) -> Optional<Output>.Publisher
+
+    // public func drop(while predicate: (Output) -> Bool) -> Optional<Output>.Publisher
+
+    // public func first() -> Just<Output>
+
+    // public func first(where predicate: (Output) -> Bool) -> Optional<Output>.Publisher
+
+    // public func last() -> Just<Output>
+
+    // public func last(where predicate: (Output) -> Bool) -> Optional<Output>.Publisher
+
+    // public func filter(_ isIncluded: (Output) -> Bool) -> Optional<Output>.Publisher
+
+    // public func ignoreOutput() -> Empty<Output, Just<Output>.Failure>
+
+    // public func map<T>(_ transform: (Output) -> T) -> Just<T>
+
+    // public func tryMap<T>(_ transform: (Output) throws -> T) -> Result<T, Error>.Publisher
+
+    // public func mapError<E>(_ transform: (Just<Output>.Failure) -> E) -> Result<Output, E>.Publisher where E : Error
+
+    // public func output(at index: Int) -> Optional<Output>.Publisher
+
+    // public func output<R>(in range: R) -> Optional<Output>.Publisher where R : RangeExpression, R.Bound == Int
+
+    // public func prefix(_ maxLength: Int) -> Optional<Output>.Publisher
+
+    // public func prefix(while predicate: (Output) -> Bool) -> Optional<Output>.Publisher
+
+    // public func reduce<T>(_ initialResult: T, _ nextPartialResult: (T, Output) -> T) -> Result<T, Just<Output>.Failure>.Publisher
+
+    // public func tryReduce<T>(_ initialResult: T, _ nextPartialResult: (T, Output) throws -> T) -> Result<T, Error>.Publisher
+
+    // public func removeDuplicates(by predicate: (Output, Output) -> Bool) -> Just<Output>
+
+    // public func tryRemoveDuplicates(by predicate: (Output, Output) throws -> Bool) -> Result<Output, Error>.Publisher
+
+    // public func replaceError(with output: Output) -> Just<Output>
+
+    // public func replaceEmpty(with output: Output) -> Just<Output>
+
+    // public func retry(_ times: Int) -> Just<Output>
+
+    // public func scan<T>(_ initialResult: T, _ nextPartialResult: (T, Output) -> T) -> Result<T, Just<Output>.Failure>.Publisher
+
+    // public func tryScan<T>(_ initialResult: T, _ nextPartialResult: (T, Output) throws -> T) -> Result<T, Error>.Publisher
+
+    // public func setFailureType<E>(to failureType: E.Type) -> Result<Output, E>.Publisher where E : Error
+}

@@ -364,86 +364,6 @@
 //    public func removeDuplicates() -> Just<Output>
 //}
 //
-//@available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-//extension Just {
-//
-//    public func allSatisfy(_ predicate: (Output) -> Bool) -> Just<Bool>
-//
-//    public func tryAllSatisfy(_ predicate: (Output) throws -> Bool) -> Result<Bool, Error>.Publisher
-//
-//    public func collect() -> Just<[Output]>
-//
-//    public func compactMap<T>(_ transform: (Output) -> T?) -> Optional<T>.Publisher
-//
-//    public func min(by areInIncreasingOrder: (Output, Output) -> Bool) -> Just<Output>
-//
-//    public func max(by areInIncreasingOrder: (Output, Output) -> Bool) -> Just<Output>
-//
-//    public func prepend(_ elements: Output...) -> Publishers.Sequence<[Output], Just<Output>.Failure>
-//
-//    public func prepend<S>(_ elements: S) -> Publishers.Sequence<[Output], Just<Output>.Failure> where Output == S.Element, S : Sequence
-//
-//    public func append(_ elements: Output...) -> Publishers.Sequence<[Output], Just<Output>.Failure>
-//
-//    public func append<S>(_ elements: S) -> Publishers.Sequence<[Output], Just<Output>.Failure> where Output == S.Element, S : Sequence
-//
-//    public func contains(where predicate: (Output) -> Bool) -> Just<Bool>
-//
-//    public func tryContains(where predicate: (Output) throws -> Bool) -> Result<Bool, Error>.Publisher
-//
-//    public func count() -> Just<Int>
-//
-//    public func dropFirst(_ count: Int = 1) -> Optional<Output>.Publisher
-//
-//    public func drop(while predicate: (Output) -> Bool) -> Optional<Output>.Publisher
-//
-//    public func first() -> Just<Output>
-//
-//    public func first(where predicate: (Output) -> Bool) -> Optional<Output>.Publisher
-//
-//    public func last() -> Just<Output>
-//
-//    public func last(where predicate: (Output) -> Bool) -> Optional<Output>.Publisher
-//
-//    public func filter(_ isIncluded: (Output) -> Bool) -> Optional<Output>.Publisher
-//
-//    public func ignoreOutput() -> Empty<Output, Just<Output>.Failure>
-//
-//    public func map<T>(_ transform: (Output) -> T) -> Just<T>
-//
-//    public func tryMap<T>(_ transform: (Output) throws -> T) -> Result<T, Error>.Publisher
-//
-//    public func mapError<E>(_ transform: (Just<Output>.Failure) -> E) -> Result<Output, E>.Publisher where E : Error
-//
-//    public func output(at index: Int) -> Optional<Output>.Publisher
-//
-//    public func output<R>(in range: R) -> Optional<Output>.Publisher where R : RangeExpression, R.Bound == Int
-//
-//    public func prefix(_ maxLength: Int) -> Optional<Output>.Publisher
-//
-//    public func prefix(while predicate: (Output) -> Bool) -> Optional<Output>.Publisher
-//
-//    public func reduce<T>(_ initialResult: T, _ nextPartialResult: (T, Output) -> T) -> Result<T, Just<Output>.Failure>.Publisher
-//
-//    public func tryReduce<T>(_ initialResult: T, _ nextPartialResult: (T, Output) throws -> T) -> Result<T, Error>.Publisher
-//
-//    public func removeDuplicates(by predicate: (Output, Output) -> Bool) -> Just<Output>
-//
-//    public func tryRemoveDuplicates(by predicate: (Output, Output) throws -> Bool) -> Result<Output, Error>.Publisher
-//
-//    public func replaceError(with output: Output) -> Just<Output>
-//
-//    public func replaceEmpty(with output: Output) -> Just<Output>
-//
-//    public func retry(_ times: Int) -> Just<Output>
-//
-//    public func scan<T>(_ initialResult: T, _ nextPartialResult: (T, Output) -> T) -> Result<T, Just<Output>.Failure>.Publisher
-//
-//    public func tryScan<T>(_ initialResult: T, _ nextPartialResult: (T, Output) throws -> T) -> Result<T, Error>.Publisher
-//
-//    public func setFailureType<E>(to failureType: E.Type) -> Result<Output, E>.Publisher where E : Error
-//}
-//
 ///// A type of object with a publisher that emits before the object has changed.
 /////
 ///// By default an `ObservableObject` will synthesize an `objectWillChange`
@@ -643,24 +563,6 @@
 //    /// - Parameter predicate: A closure that takes an element as a parameter and returns a Boolean value indicating whether to drop the element from the publisher’s output.
 //    /// - Returns: A publisher that skips over elements until the provided closure returns `false`, and then republishes all remaining elements. If the predicate closure throws, the publisher fails with an error.
 //    public func tryDrop(while predicate: @escaping (Self.Output) throws -> Bool) -> Publishers.TryDropWhile<Self>
-//}
-//
-//@available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-//extension Publisher {
-//
-//    /// Republishes all elements that match a provided closure.
-//    ///
-//    /// - Parameter isIncluded: A closure that takes one element and returns a Boolean value indicating whether to republish the element.
-//    /// - Returns: A publisher that republishes all elements that satisfy the closure.
-//    public func filter(_ isIncluded: @escaping (Self.Output) -> Bool) -> Publishers.Filter<Self>
-//
-//    /// Republishes all elements that match a provided error-throwing closure.
-//    ///
-//    /// If the `isIncluded` closure throws an error, the publisher fails with that error.
-//    ///
-//    /// - Parameter isIncluded:  A closure that takes one element and returns a Boolean value indicating whether to republish the element.
-//    /// - Returns:  A publisher that republishes all elements that satisfy the closure.
-//    public func tryFilter(_ isIncluded: @escaping (Self.Output) throws -> Bool) -> Publishers.TryFilter<Self>
 //}
 //
 //@available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
@@ -1203,17 +1105,6 @@
 //@available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 //extension Publisher {
 //
-//    /// Attempts to recreate a failed subscription with the upstream publisher using a specified number of attempts to establish the connection.
-//    ///
-//    /// After exceeding the specified number of retries, the publisher passes the failure to the downstream receiver.
-//    /// - Parameter retries: The number of times to attempt to recreate the subscription.
-//    /// - Returns: A publisher that attempts to recreate its subscription to a failed upstream publisher.
-//    public func retry(_ retries: Int) -> Publishers.Retry<Self>
-//}
-//
-//@available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-//extension Publisher {
-//
 //    /// Publishes either the most-recent or first element published by the upstream publisher in the specified time interval.
 //    ///
 //    /// - Parameters:
@@ -1518,54 +1409,6 @@
 //@available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 //extension Publisher {
 //
-//    /// Handles errors from an upstream publisher by replacing it with another publisher.
-//    ///
-//    /// The following example replaces any error from the upstream publisher and replaces the upstream with a `Just` publisher. This continues the stream by publishing a single value and completing normally.
-//    /// ```
-//    /// enum SimpleError: Error { case error }
-//    /// let errorPublisher = (0..<10).publisher.tryMap { v -> Int in
-//    ///     if v < 5 {
-//    ///         return v
-//    ///     } else {
-//    ///         throw SimpleError.error
-//    ///     }
-//    /// }
-//    ///
-//    /// let noErrorPublisher = errorPublisher.catch { _ in
-//    ///     return Just(100)
-//    /// }
-//    /// ```
-//    /// Backpressure note: This publisher passes through `request` and `cancel` to the upstream. After receiving an error, the publisher sends sends any unfulfilled demand to the new `Publisher`.
-//    /// - Parameter handler: A closure that accepts the upstream failure as input and returns a publisher to replace the upstream publisher.
-//    /// - Returns: A publisher that handles errors from an upstream publisher by replacing the failed publisher with another publisher.
-//    public func `catch`<P>(_ handler: @escaping (Self.Failure) -> P) -> Publishers.Catch<Self, P> where P : Publisher, Self.Output == P.Output
-//
-//    /// Handles errors from an upstream publisher by either replacing it with another publisher or `throw`ing  a new error.
-//    ///
-//    /// - Parameter handler: A `throw`ing closure that accepts the upstream failure as input and returns a publisher to replace the upstream publisher or if an error is thrown will send the error downstream.
-//    /// - Returns: A publisher that handles errors from an upstream publisher by replacing the failed publisher with another publisher.
-//    public func tryCatch<P>(_ handler: @escaping (Self.Failure) throws -> P) -> Publishers.TryCatch<Self, P> where P : Publisher, Self.Output == P.Output
-//}
-//
-//@available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-//extension Publisher {
-//
-//    /// Transforms all elements from an upstream publisher into a new or existing publisher.
-//    ///
-//    /// `flatMap` merges the output from all returned publishers into a single stream of output.
-//    ///
-//    /// - Parameters:
-//    ///   - maxPublishers: The maximum number of publishers produced by this method.
-//    ///   - transform: A closure that takes an element as a parameter and returns a publisher
-//    /// that produces elements of that type.
-//    /// - Returns: A publisher that transforms elements from an upstream publisher into
-//    /// a publisher of that element’s type.
-//    public func flatMap<T, P>(maxPublishers: Subscribers.Demand = .unlimited, _ transform: @escaping (Self.Output) -> P) -> Publishers.FlatMap<P, Self> where T == P.Output, P : Publisher, Self.Failure == P.Failure
-//}
-//
-//@available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-//extension Publisher {
-//
 //    /// Delays delivery of all output to the downstream receiver by a specified amount of time on a particular scheduler.
 //    ///
 //    /// The delay affects the delivery of elements and completion, but not of the original subscription.
@@ -1585,30 +1428,6 @@
 //    /// - Parameter count: The number of elements to omit.
 //    /// - Returns: A publisher that does not republish the first `count` elements.
 //    public func dropFirst(_ count: Int = 1) -> Publishers.Drop<Self>
-//}
-//
-//@available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-//extension Publisher {
-//
-//    /// Publishes the first element of a stream, then finishes.
-//    ///
-//    /// If this publisher doesn’t receive any elements, it finishes without publishing.
-//    /// - Returns: A publisher that only publishes the first element of a stream.
-//    public func first() -> Publishers.First<Self>
-//
-//    /// Publishes the first element of a stream to satisfy a predicate closure, then finishes.
-//    ///
-//    /// The publisher ignores all elements after the first. If this publisher doesn’t receive any elements, it finishes without publishing.
-//    /// - Parameter predicate: A closure that takes an element as a parameter and returns a Boolean value that indicates whether to publish the element.
-//    /// - Returns: A publisher that only publishes the first element of a stream that satifies the predicate.
-//    public func first(where predicate: @escaping (Self.Output) -> Bool) -> Publishers.FirstWhere<Self>
-//
-//    /// Publishes the first element of a stream to satisfy a throwing predicate closure, then finishes.
-//    ///
-//    /// The publisher ignores all elements after the first. If this publisher doesn’t receive any elements, it finishes without publishing. If the predicate closure throws, the publisher fails with an error.
-//    /// - Parameter predicate: A closure that takes an element as a parameter and returns a Boolean value that indicates whether to publish the element.
-//    /// - Returns: A publisher that only publishes the first element of a stream that satifies the predicate.
-//    public func tryFirst(where predicate: @escaping (Self.Output) throws -> Bool) -> Publishers.TryFirstWhere<Self>
 //}
 //
 //@available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
@@ -1775,66 +1594,6 @@
 //        ///     - subscriber: The subscriber to attach to this `Publisher`.
 //        ///                   once attached it can begin to receive values.
 //        public func receive<S>(subscriber: S) where S : Subscriber, Upstream.Output == S.Input, S.Failure == Publishers.TryDropWhile<Upstream>.Failure
-//    }
-//}
-//
-//@available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-//extension Publishers {
-//
-//    /// A publisher that republishes all elements that match a provided closure.
-//    public struct Filter<Upstream> : Publisher where Upstream : Publisher {
-//
-//        /// The kind of values published by this publisher.
-//        public typealias Output = Upstream.Output
-//
-//        /// The kind of errors this publisher might publish.
-//        ///
-//        /// Use `Never` if this `Publisher` does not publish errors.
-//        public typealias Failure = Upstream.Failure
-//
-//        /// The publisher from which this publisher receives elements.
-//        public let upstream: Upstream
-//
-//        /// A closure that indicates whether to republish an element.
-//        public let isIncluded: (Upstream.Output) -> Bool
-//
-//        public init(upstream: Upstream, isIncluded: @escaping (Upstream.Output) -> Bool)
-//
-//        /// This function is called to attach the specified `Subscriber` to this `Publisher` by `subscribe(_:)`
-//        ///
-//        /// - SeeAlso: `subscribe(_:)`
-//        /// - Parameters:
-//        ///     - subscriber: The subscriber to attach to this `Publisher`.
-//        ///                   once attached it can begin to receive values.
-//        public func receive<S>(subscriber: S) where S : Subscriber, Upstream.Failure == S.Failure, Upstream.Output == S.Input
-//    }
-//
-//    /// A publisher that republishes all elements that match a provided error-throwing closure.
-//    public struct TryFilter<Upstream> : Publisher where Upstream : Publisher {
-//
-//        /// The kind of values published by this publisher.
-//        public typealias Output = Upstream.Output
-//
-//        /// The kind of errors this publisher might publish.
-//        ///
-//        /// Use `Never` if this `Publisher` does not publish errors.
-//        public typealias Failure = Error
-//
-//        /// The publisher from which this publisher receives elements.
-//        public let upstream: Upstream
-//
-//        /// A error-throwing closure that indicates whether to republish an element.
-//        public let isIncluded: (Upstream.Output) throws -> Bool
-//
-//        public init(upstream: Upstream, isIncluded: @escaping (Upstream.Output) throws -> Bool)
-//
-//        /// This function is called to attach the specified `Subscriber` to this `Publisher` by `subscribe(_:)`
-//        ///
-//        /// - SeeAlso: `subscribe(_:)`
-//        /// - Parameters:
-//        ///     - subscriber: The subscriber to attach to this `Publisher`.
-//        ///                   once attached it can begin to receive values.
-//        public func receive<S>(subscriber: S) where S : Subscriber, Upstream.Output == S.Input, S.Failure == Publishers.TryFilter<Upstream>.Failure
 //    }
 //}
 //
@@ -3233,45 +2992,6 @@
 //@available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 //extension Publishers {
 //
-//    /// A publisher that attempts to recreate its subscription to a failed upstream publisher.
-//    public struct Retry<Upstream> : Publisher where Upstream : Publisher {
-//
-//        /// The kind of values published by this publisher.
-//        public typealias Output = Upstream.Output
-//
-//        /// The kind of errors this publisher might publish.
-//        ///
-//        /// Use `Never` if this `Publisher` does not publish errors.
-//        public typealias Failure = Upstream.Failure
-//
-//        /// The publisher from which this publisher receives elements.
-//        public let upstream: Upstream
-//
-//        /// The maximum number of retry attempts to perform.
-//        ///
-//        /// If `nil`, this publisher attempts to reconnect with the upstream publisher an unlimited number of times.
-//        public let retries: Int?
-//
-//        /// Creates a publisher that attempts to recreate its subscription to a failed upstream publisher.
-//        ///
-//        /// - Parameters:
-//        ///   - upstream: The publisher from which this publisher receives its elements.
-//        ///   - retries: The maximum number of retry attempts to perform. If `nil`, this publisher attempts to reconnect with the upstream publisher an unlimited number of times.
-//        public init(upstream: Upstream, retries: Int?)
-//
-//        /// This function is called to attach the specified `Subscriber` to this `Publisher` by `subscribe(_:)`
-//        ///
-//        /// - SeeAlso: `subscribe(_:)`
-//        /// - Parameters:
-//        ///     - subscriber: The subscriber to attach to this `Publisher`.
-//        ///                   once attached it can begin to receive values.
-//        public func receive<S>(subscriber: S) where S : Subscriber, Upstream.Failure == S.Failure, Upstream.Output == S.Input
-//    }
-//}
-//
-//@available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-//extension Publishers {
-//
 //    /// A publisher that publishes either the most-recent or first element published by the upstream publisher in a specified time interval.
 //    public struct Throttle<Upstream, Context> : Publisher where Upstream : Publisher, Context : Scheduler {
 //
@@ -3908,94 +3628,6 @@
 //@available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 //extension Publishers {
 //
-//    /// A publisher that handles errors from an upstream publisher by replacing the failed publisher with another publisher.
-//    public struct Catch<Upstream, NewPublisher> : Publisher where Upstream : Publisher, NewPublisher : Publisher, Upstream.Output == NewPublisher.Output {
-//
-//        /// The kind of values published by this publisher.
-//        public typealias Output = Upstream.Output
-//
-//        /// The kind of errors this publisher might publish.
-//        ///
-//        /// Use `Never` if this `Publisher` does not publish errors.
-//        public typealias Failure = NewPublisher.Failure
-//
-//        /// The publisher that this publisher receives elements from.
-//        public let upstream: Upstream
-//
-//        /// A closure that accepts the upstream failure as input and returns a publisher to replace the upstream publisher.
-//        public let handler: (Upstream.Failure) -> NewPublisher
-//
-//        /// Creates a publisher that handles errors from an upstream publisher by replacing the failed publisher with another publisher.
-//        ///
-//        /// - Parameters:
-//        ///   - upstream: The publisher that this publisher receives elements from.
-//        ///   - handler: A closure that accepts the upstream failure as input and returns a publisher to replace the upstream publisher.
-//        public init(upstream: Upstream, handler: @escaping (Upstream.Failure) -> NewPublisher)
-//
-//        /// This function is called to attach the specified `Subscriber` to this `Publisher` by `subscribe(_:)`
-//        ///
-//        /// - SeeAlso: `subscribe(_:)`
-//        /// - Parameters:
-//        ///     - subscriber: The subscriber to attach to this `Publisher`.
-//        ///                   once attached it can begin to receive values.
-//        public func receive<S>(subscriber: S) where S : Subscriber, NewPublisher.Failure == S.Failure, NewPublisher.Output == S.Input
-//    }
-//
-//    /// A publisher that handles errors from an upstream publisher by replacing the failed publisher with another publisher or optionally producing a new error.
-//    public struct TryCatch<Upstream, NewPublisher> : Publisher where Upstream : Publisher, NewPublisher : Publisher, Upstream.Output == NewPublisher.Output {
-//
-//        /// The kind of values published by this publisher.
-//        public typealias Output = Upstream.Output
-//
-//        /// The kind of errors this publisher might publish.
-//        ///
-//        /// Use `Never` if this `Publisher` does not publish errors.
-//        public typealias Failure = Error
-//
-//        public let upstream: Upstream
-//
-//        public let handler: (Upstream.Failure) throws -> NewPublisher
-//
-//        public init(upstream: Upstream, handler: @escaping (Upstream.Failure) throws -> NewPublisher)
-//
-//        /// This function is called to attach the specified `Subscriber` to this `Publisher` by `subscribe(_:)`
-//        ///
-//        /// - SeeAlso: `subscribe(_:)`
-//        /// - Parameters:
-//        ///     - subscriber: The subscriber to attach to this `Publisher`.
-//        ///                   once attached it can begin to receive values.
-//        public func receive<S>(subscriber: S) where S : Subscriber, NewPublisher.Output == S.Input, S.Failure == Publishers.TryCatch<Upstream, NewPublisher>.Failure
-//    }
-//}
-//
-//@available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-//extension Publishers {
-//
-//    public struct FlatMap<NewPublisher, Upstream> : Publisher where NewPublisher : Publisher, Upstream : Publisher, NewPublisher.Failure == Upstream.Failure {
-//
-//        /// The kind of values published by this publisher.
-//        public typealias Output = NewPublisher.Output
-//
-//        /// The kind of errors this publisher might publish.
-//        ///
-//        /// Use `Never` if this `Publisher` does not publish errors.
-//        public typealias Failure = Upstream.Failure
-//
-//        public let upstream: Upstream
-//
-//        public let maxPublishers: Subscribers.Demand
-//
-//        public let transform: (Upstream.Output) -> NewPublisher
-//
-//        public init(upstream: Upstream, maxPublishers: Subscribers.Demand, transform: @escaping (Upstream.Output) -> NewPublisher)
-//
-//        /// This function is called to attach the specified `Subscriber` to this `Publisher` by `subscribe(_:)`
-//        ///
-//        /// - SeeAlso: `subscribe(_:)`
-//        /// - Parameters:
-//        ///     - subscriber: The subscriber to attach to this `Publisher`.
-//        ///                   once attached it can begin to receive values.
-//        public func receive<S>(subscriber: S) where S : Subscriber, NewPublisher.Output == S.Input, Upstream.Failure == S.Failure
 //    }
 //}
 //
@@ -4068,91 +3700,6 @@
 //        ///     - subscriber: The subscriber to attach to this `Publisher`.
 //        ///                   once attached it can begin to receive values.
 //        public func receive<S>(subscriber: S) where S : Subscriber, Upstream.Failure == S.Failure, Upstream.Output == S.Input
-//    }
-//}
-//
-//@available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-//extension Publishers {
-//
-//    /// A publisher that publishes the first element of a stream, then finishes.
-//    public struct First<Upstream> : Publisher where Upstream : Publisher {
-//
-//        /// The kind of values published by this publisher.
-//        public typealias Output = Upstream.Output
-//
-//        /// The kind of errors this publisher might publish.
-//        ///
-//        /// Use `Never` if this `Publisher` does not publish errors.
-//        public typealias Failure = Upstream.Failure
-//
-//        /// The publisher from which this publisher receives elements.
-//        public let upstream: Upstream
-//
-//        public init(upstream: Upstream)
-//
-//        /// This function is called to attach the specified `Subscriber` to this `Publisher` by `subscribe(_:)`
-//        ///
-//        /// - SeeAlso: `subscribe(_:)`
-//        /// - Parameters:
-//        ///     - subscriber: The subscriber to attach to this `Publisher`.
-//        ///                   once attached it can begin to receive values.
-//        public func receive<S>(subscriber: S) where S : Subscriber, Upstream.Failure == S.Failure, Upstream.Output == S.Input
-//    }
-//
-//    /// A publisher that only publishes the first element of a stream to satisfy a predicate closure.
-//    public struct FirstWhere<Upstream> : Publisher where Upstream : Publisher {
-//
-//        /// The kind of values published by this publisher.
-//        public typealias Output = Upstream.Output
-//
-//        /// The kind of errors this publisher might publish.
-//        ///
-//        /// Use `Never` if this `Publisher` does not publish errors.
-//        public typealias Failure = Upstream.Failure
-//
-//        /// The publisher from which this publisher receives elements.
-//        public let upstream: Upstream
-//
-//        /// The closure that determines whether to publish an element.
-//        public let predicate: (Upstream.Output) -> Bool
-//
-//        public init(upstream: Upstream, predicate: @escaping (Publishers.FirstWhere<Upstream>.Output) -> Bool)
-//
-//        /// This function is called to attach the specified `Subscriber` to this `Publisher` by `subscribe(_:)`
-//        ///
-//        /// - SeeAlso: `subscribe(_:)`
-//        /// - Parameters:
-//        ///     - subscriber: The subscriber to attach to this `Publisher`.
-//        ///                   once attached it can begin to receive values.
-//        public func receive<S>(subscriber: S) where S : Subscriber, Upstream.Failure == S.Failure, Upstream.Output == S.Input
-//    }
-//
-//    /// A publisher that only publishes the first element of a stream to satisfy a throwing predicate closure.
-//    public struct TryFirstWhere<Upstream> : Publisher where Upstream : Publisher {
-//
-//        /// The kind of values published by this publisher.
-//        public typealias Output = Upstream.Output
-//
-//        /// The kind of errors this publisher might publish.
-//        ///
-//        /// Use `Never` if this `Publisher` does not publish errors.
-//        public typealias Failure = Error
-//
-//        /// The publisher from which this publisher receives elements.
-//        public let upstream: Upstream
-//
-//        /// The error-throwing closure that determines whether to publish an element.
-//        public let predicate: (Upstream.Output) throws -> Bool
-//
-//        public init(upstream: Upstream, predicate: @escaping (Publishers.TryFirstWhere<Upstream>.Output) throws -> Bool)
-//
-//        /// This function is called to attach the specified `Subscriber` to this `Publisher` by `subscribe(_:)`
-//        ///
-//        /// - SeeAlso: `subscribe(_:)`
-//        /// - Parameters:
-//        ///     - subscriber: The subscriber to attach to this `Publisher`.
-//        ///                   once attached it can begin to receive values.
-//        public func receive<S>(subscriber: S) where S : Subscriber, Upstream.Output == S.Input, S.Failure == Publishers.TryFirstWhere<Upstream>.Failure
 //    }
 //}
 //
