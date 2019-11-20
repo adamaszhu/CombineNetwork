@@ -35,5 +35,17 @@ public protocol Subscriber {
     /// Tells the subscriber that the publisher has completed publishing, either normally or with an error.
     ///
     /// - Parameter completion: A `Completion` case indicating whether publishing completed normally or with an error.
-    // func receive(completion: Subscribers.Completion<Self.Failure>)
+    func receive(completion: Subscribers.Completion<Self.Failure>)
+}
+
+extension Subscriber {
+    
+    public func receive(completion: Subscribers.Completion<Self.Failure>) {
+        switch completion {
+        case .finished:
+            observer.onCompleted()
+        case .failure(let error):
+            observer.onError(error)
+        }
+    }
 }

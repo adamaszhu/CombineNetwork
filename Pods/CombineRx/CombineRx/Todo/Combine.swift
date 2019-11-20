@@ -14,82 +14,6 @@
 //    final public func store(in set: inout Set<AnyCancellable>)
 //}
 //
-///// A type-erasing subscriber.
-/////
-///// Use an `AnySubscriber` to wrap an existing subscriber whose details you don’t want to expose.
-///// You can also use `AnySubscriber` to create a custom subscriber by providing closures for `Subscriber`’s methods, rather than implementing `Subscriber` directly.
-//@available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-//public struct AnySubscriber<Input, Failure> : Subscriber, CustomStringConvertible, CustomReflectable, CustomPlaygroundDisplayConvertible where Failure : Error {
-//
-//    public let combineIdentifier: CombineIdentifier
-//
-//    /// A textual representation of this instance.
-//    ///
-//    /// Calling this property directly is discouraged. Instead, convert an
-//    /// instance of any type to a string by using the `String(describing:)`
-//    /// initializer. This initializer works with any type, and uses the custom
-//    /// `description` property for types that conform to
-//    /// `CustomStringConvertible`:
-//    ///
-//    ///     struct Point: CustomStringConvertible {
-//    ///         let x: Int, y: Int
-//    ///
-//    ///         var description: String {
-//    ///             return "(\(x), \(y))"
-//    ///         }
-//    ///     }
-//    ///
-//    ///     let p = Point(x: 21, y: 30)
-//    ///     let s = String(describing: p)
-//    ///     print(s)
-//    ///     // Prints "(21, 30)"
-//    ///
-//    /// The conversion of `p` to a string in the assignment to `s` uses the
-//    /// `Point` type's `description` property.
-//    public var description: String { get }
-//
-//    /// The custom mirror for this instance.
-//    ///
-//    /// If this type has value semantics, the mirror should be unaffected by
-//    /// subsequent mutations of the instance.
-//    public var customMirror: Mirror { get }
-//
-//    /// A custom playground description for this instance.
-//    public var playgroundDescription: Any { get }
-//
-//    /// Creates a type-erasing subscriber to wrap an existing subscriber.
-//    ///
-//    /// - Parameter s: The subscriber to type-erase.
-//    @inlinable public init<S>(_ s: S) where Input == S.Input, Failure == S.Failure, S : Subscriber
-//
-//    public init<S>(_ s: S) where Input == S.Output, Failure == S.Failure, S : Subject
-//
-//    /// Creates a type-erasing subscriber that executes the provided closures.
-//    ///
-//    /// - Parameters:
-//    ///   - receiveSubscription: A closure to execute when the subscriber receives the initial subscription from the publisher.
-//    ///   - receiveValue: A closure to execute when the subscriber receives a value from the publisher.
-//    ///   - receiveCompletion: A closure to execute when the subscriber receives a completion callback from the publisher.
-//    @inlinable public init(receiveSubscription: ((Subscription) -> Void)? = nil, receiveValue: ((Input) -> Subscribers.Demand)? = nil, receiveCompletion: ((Subscribers.Completion<Failure>) -> Void)? = nil)
-//
-//    /// Tells the subscriber that it has successfully subscribed to the publisher and may request items.
-//    ///
-//    /// Use the received `Subscription` to request items from the publisher.
-//    /// - Parameter subscription: A subscription that represents the connection between publisher and subscriber.
-//    @inlinable public func receive(subscription: Subscription)
-//
-//    /// Tells the subscriber that the publisher has produced an element.
-//    ///
-//    /// - Parameter input: The published element.
-//    /// - Returns: A `Demand` instance indicating how many more elements the subcriber expects to receive.
-//    @inlinable public func receive(_ value: Input) -> Subscribers.Demand
-//
-//    /// Tells the subscriber that the publisher has completed publishing, either normally or with an error.
-//    ///
-//    /// - Parameter completion: A `Completion` case indicating whether publishing completed normally or with an error.
-//    @inlinable public func receive(completion: Subscribers.Completion<Failure>)
-//}
-//
 //extension Cancellable {
 //
 //    /// Stores this Cancellable in the specified collection.
@@ -430,33 +354,6 @@
 //    final public func receive<S>(subscriber: S) where S : Subscriber, S.Failure == ObservableObjectPublisher.Failure, S.Input == ObservableObjectPublisher.Output
 //
 //    final public func send()
-//}
-//
-//@available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-//final public class PassthroughSubject<Output, Failure> : Subject where Failure : Error {
-//
-//    public init()
-//
-//    /// Provides this Subject an opportunity to establish demand for any new upstream subscriptions (say via, ```Publisher.subscribe<S: Subject>(_: Subject)`
-//    final public func send(subscription: Subscription)
-//
-//    /// This function is called to attach the specified `Subscriber` to this `Publisher` by `subscribe(_:)`
-//    ///
-//    /// - SeeAlso: `subscribe(_:)`
-//    /// - Parameters:
-//    ///     - subscriber: The subscriber to attach to this `Publisher`.
-//    ///                   once attached it can begin to receive values.
-//    final public func receive<S>(subscriber: S) where Output == S.Input, Failure == S.Failure, S : Subscriber
-//
-//    /// Sends a value to the subscriber.
-//    ///
-//    /// - Parameter value: The value to send.
-//    final public func send(_ input: Output)
-//
-//    /// Sends a completion signal to the subscriber.
-//    ///
-//    /// - Parameter completion: A `Completion` instance which indicates whether publishing has finished normally or failed with an error.
-//    final public func send(completion: Subscribers.Completion<Failure>)
 //}
 //
 ///// Adds a `Publisher` to a property.
