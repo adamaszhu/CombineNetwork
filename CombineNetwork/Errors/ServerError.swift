@@ -10,6 +10,7 @@ public enum ServerError: Int, Error {
     
     case badRequestError = 400
     case unauthorized = 401
+    case authenticationTimeout = 419
     case unknownResponse = 422
     case internalServer = 500
     case serviceUnavailable = 503
