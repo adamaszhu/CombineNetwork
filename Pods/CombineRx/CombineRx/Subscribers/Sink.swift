@@ -53,11 +53,6 @@ extension Subscribers {
         /// - Returns: A `Demand` instance indicating how many more elements the subcriber expects to receive.
         // final public func receive(_ value: Input) -> Subscribers.Demand
         
-        /// Tells the subscriber that the publisher has completed publishing, either normally or with an error.
-        ///
-        /// - Parameter completion: A `Completion` case indicating whether publishing completed normally or with an error.
-        // final public func receive(completion: Subscribers.Completion<Failure>)
-        
         /// Cancel the activity.
         final public func cancel() {
             disposable?.dispose()
