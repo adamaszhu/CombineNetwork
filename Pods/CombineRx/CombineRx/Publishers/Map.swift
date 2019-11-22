@@ -24,12 +24,8 @@ extension Publishers {
                 .map(transform)
         }
         
-        fileprivate init<PreviousUpstream, PreviousOutput>(publisher: Publishers.Map<PreviousUpstream, PreviousOutput>, transform: @escaping (PreviousOutput) -> Output) {
-            observable = publisher.observable.map(transform)
-        }
-        
-        fileprivate init<PreviousUpstream, PreviousOutput>(publisher: Publishers.TryMap<PreviousUpstream, PreviousOutput>, transform: @escaping (PreviousOutput) -> Output) {
-            observable = publisher.observable.map(transform)
+        fileprivate init(observable: Observable<Output>) {
+            self.observable = observable
         }
     }
     
@@ -48,12 +44,8 @@ extension Publishers {
                 .map(transform)
         }
         
-        fileprivate init<PreviousUpstream, PreviousOutput>(publisher: Publishers.Map<PreviousUpstream, PreviousOutput>, transform: @escaping (PreviousOutput) throws -> Output) {
-            observable = publisher.observable.map(transform)
-        }
-        
-        fileprivate init<PreviousUpstream, PreviousOutput>(publisher: Publishers.TryMap<PreviousUpstream, PreviousOutput>, transform: @escaping (PreviousOutput) throws -> Output) {
-            observable = publisher.observable.map(transform)
+        fileprivate init(observable: Observable<Output>) {
+            self.observable = observable
         }
     }
 }
@@ -81,22 +73,26 @@ extension Publisher {
 extension Publishers.Map {
     
     public func map<T>(_ transform: @escaping (Output) -> T) -> Publishers.Map<Upstream, T> {
-        return Publishers.Map(publisher: self, transform: transform)
+        let observable = self.observable.map(transform)
+        return Publishers.Map(observable: observable)
     }
     
     public func tryMap<T>(_ transform: @escaping (Output) throws -> T) -> Publishers.TryMap<Upstream, T> {
-        return Publishers.TryMap(publisher: self, transform: transform)
+        let observable = self.observable.map(transform)
+        return Publishers.TryMap(observable: observable)
     }
 }
 
 extension Publishers.TryMap {
     
     public func map<T>(_ transform: @escaping (Output) -> T) -> Publishers.TryMap<Upstream, T> {
-        return Publishers.TryMap(publisher: self, transform: transform)
+        let observable = self.observable.map(transform)
+        return Publishers.TryMap(observable: observable)
     }
     
     public func tryMap<T>(_ transform: @escaping (Output) throws -> T) -> Publishers.TryMap<Upstream, T> {
-        return Publishers.TryMap(publisher: self, transform: transform)
+        let observable = self.observable.map(transform)
+        return Publishers.TryMap(observable: observable)
     }
 }
 
