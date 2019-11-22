@@ -27,6 +27,10 @@ public struct Just<Output> : Publisher {
     public init(_ output: Output) {
         observable = Observable.of(output)
     }
+    
+    fileprivate init(observable: Observable<Output>) {
+        self.observable = observable
+    }
 }
 
 extension Just {
@@ -61,11 +65,15 @@ extension Just {
 
     // public func drop(while predicate: (Output) -> Bool) -> Optional<Output>.Publisher
 
-    // public func first() -> Just<Output>
+    public func first() -> Just<Output> {
+        return self
+    }
 
     // public func first(where predicate: (Output) -> Bool) -> Optional<Output>.Publisher
 
-    // public func last() -> Just<Output>
+    public func last() -> Just<Output> {
+        return self
+    }
 
     // public func last(where predicate: (Output) -> Bool) -> Optional<Output>.Publisher
 
@@ -73,7 +81,10 @@ extension Just {
 
     // public func ignoreOutput() -> Empty<Output, Just<Output>.Failure>
 
-    // public func map<T>(_ transform: (Output) -> T) -> Just<T>
+    public func map<T>(_ transform: @escaping (Output) -> T) -> Just<T> {
+        let observable = self.observable.map(transform)
+        return Just<T>(observable: observable)
+    }
 
     // public func tryMap<T>(_ transform: (Output) throws -> T) -> Result<T, Error>.Publisher
 

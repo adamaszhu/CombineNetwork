@@ -26,12 +26,8 @@ extension Publishers {
             observable = Observable.from(sequence)
         }
 
-        private init(observable: Observable<Elements.Element>) {
+        fileprivate init(observable: Observable<Elements.Element>) {
             self.observable = observable
-        }
-        
-        fileprivate init<PreviousElements>(publisher: Publishers.Sequence<PreviousElements, Failure>, transform: @escaping (PreviousElements.Element) -> Elements.Element) {
-            self.observable = publisher.observable.map(transform)
         }
     }
 }
@@ -54,12 +50,16 @@ extension Publishers.Sequence {
     
     // public func dropFirst(_ count: Int = 1) -> Publishers.Sequence<DropFirstSequence<Elements>, Failure>
     
-    // public func filter(_ isIncluded: (Publishers.Sequence<Elements, Failure>.Output) -> Bool) -> Publishers.Sequence<[Publishers.Sequence<Elements, Failure>.Output], Failure>
+    public func filter(_ isIncluded: @escaping (Publishers.Sequence<Elements, Failure>.Output) -> Bool) -> Publishers.Sequence<[Publishers.Sequence<Elements, Failure>.Output], Failure> {
+        let observable = self.observable.filter(isIncluded)
+        return Publishers.Sequence(observable: observable)
+    }
     
     // public func ignoreOutput() -> Empty<Publishers.Sequence<Elements, Failure>.Output, Failure>
     
     public func map<T>(_ transform: @escaping (Elements.Element) -> T) -> Publishers.Sequence<[T], Failure> {
-        return Publishers.Sequence(publisher: self, transform: transform)
+        let observable = self.observable.map(transform)
+        return Publishers.Sequence(observable: observable)
     }
     
     // public func prefix(_ maxLength: Int) -> Publishers.Sequence<PrefixSequence<Elements>, Failure>
