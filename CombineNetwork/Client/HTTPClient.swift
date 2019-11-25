@@ -29,7 +29,8 @@ open class HTTPClient: HTTPClientType {
         with request: URLRequest,
         promoting businessErrorTypes: [BusinessError.Type] = []) -> AnyPublisher<Object?, HTTPError> {
         guard networkConnectionManager.isConnected else {
-            return errorPublisher(of: .network(.connection))
+            return Fail<Object?, HTTPError>(error: .network(.connection))
+                .eraseToAnyPublisher()
         }
         return session.dataTaskPublisher(for: request)
             .mapNetworkError()
@@ -42,7 +43,8 @@ open class HTTPClient: HTTPClientType {
         with request: URLRequest,
         promoting businessErrorTypes: [BusinessError.Type] = []) -> AnyPublisher<[Object]?, HTTPError> {
         guard networkConnectionManager.isConnected else {
-            return errorPublisher(of: .network(.connection))
+            return Fail<[Object]?, HTTPError>(error: .network(.connection))
+                .eraseToAnyPublisher()
         }
         return session.dataTaskPublisher(for: request)
             .mapNetworkError()
@@ -53,7 +55,8 @@ open class HTTPClient: HTTPClientType {
     
     public func requestData(with request: URLRequest) -> AnyPublisher<Data?, HTTPError> {
         guard networkConnectionManager.isConnected else {
-            return errorPublisher(of: .network(.connection))
+            return Fail<Data?, HTTPError>(error: .network(.connection))
+                .eraseToAnyPublisher()
         }
         return session.dataTaskPublisher(for: request)
             .mapNetworkError()
@@ -74,11 +77,14 @@ open class HTTPClient: HTTPClientType {
             let request = try self.request(from: url, using: method, attaching: header, attaching: parameters, with: body, as: bodyType)
             return requestObject(with: request, promoting: businessErrorTypes)
         } catch HTTPError.encoding {
-            return errorPublisher(of: .encoding)
+            return Fail<Object?, HTTPError>(error: .encoding)
+                .eraseToAnyPublisher()
         } catch HTTPError.url {
-            return errorPublisher(of: .url)
+            return Fail<Object?, HTTPError>(error: .url)
+                .eraseToAnyPublisher()
         } catch {
-            return errorPublisher(of: .unknown)
+            return Fail<Object?, HTTPError>(error: .unknown)
+                .eraseToAnyPublisher()
         }
     }
     
@@ -94,11 +100,14 @@ open class HTTPClient: HTTPClientType {
             let request = try self.request(from: url, using: method, attaching: header, attaching: parameters, with: body, as: bodyType)
             return requestObjects(with: request, promoting: businessErrorTypes)
         } catch HTTPError.encoding {
-            return errorPublisher(of: .encoding)
+            return Fail<[Object]?, HTTPError>(error: .encoding)
+                .eraseToAnyPublisher()
         } catch HTTPError.url {
-            return errorPublisher(of: .url)
+            return Fail<[Object]?, HTTPError>(error: .url)
+                .eraseToAnyPublisher()
         } catch {
-            return errorPublisher(of: .unknown)
+            return Fail<[Object]?, HTTPError>(error: .unknown)
+                .eraseToAnyPublisher()
         }
     }
     
@@ -113,9 +122,11 @@ open class HTTPClient: HTTPClientType {
             let request = try self.request(from: url, using: method, attaching: header, attaching: parameters, with: body, as: bodyType)
             return requestData(with: request)
         } catch HTTPError.url {
-            return errorPublisher(of: .url)
+            return Fail<Data?, HTTPError>(error: .url)
+                .eraseToAnyPublisher()
         } catch {
-            return errorPublisher(of: .unknown)
+            return Fail<Data?, HTTPError>(error: .unknown)
+                .eraseToAnyPublisher()
         }
     }
     
@@ -145,16 +156,6 @@ open class HTTPClient: HTTPClientType {
         }
         
         return request
-    }
-    
-    private func errorPublisher<T>(of error: HTTPError) -> AnyPublisher<T?, HTTPError> {
-        let value: T? = nil
-        return Just(value)
-            .tryMap { _ in
-                throw error
-            }
-            .eraseToAnyPublisher()
-            .mapHTTPError()
     }
 }
 
