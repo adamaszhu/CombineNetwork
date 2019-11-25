@@ -51,6 +51,17 @@ open class HTTPClient: HTTPClientType {
             .decodeObjects()
     }
     
+    public func requestData(with request: URLRequest) -> AnyPublisher<Data?, HTTPError> {
+        guard networkConnectionManager.isConnected else {
+            return errorPublisher(of: .network(.connection))
+        }
+        return session.dataTaskPublisher(for: request)
+            .mapNetworkError()
+            .catchServerError()
+            .map { $0.data }
+            .eraseToAnyPublisher()
+    }
+    
     public func requestObject<Object: Decodable>(
         from url: URL,
         using method: RequestMethod,
@@ -84,6 +95,23 @@ open class HTTPClient: HTTPClientType {
             return requestObjects(with: request, promoting: businessErrorTypes)
         } catch HTTPError.encoding {
             return errorPublisher(of: .encoding)
+        } catch HTTPError.url {
+            return errorPublisher(of: .url)
+        } catch {
+            return errorPublisher(of: .unknown)
+        }
+    }
+    
+    public func requestData(
+        from url: URL,
+        using method: RequestMethod,
+        attaching header: RequestHeader?,
+        attaching parameters: URLParameters?,
+        with body: RequestBody?,
+        as bodyType: RequestBodyType?) -> AnyPublisher<Data?, HTTPError> {
+        do {
+            let request = try self.request(from: url, using: method, attaching: header, attaching: parameters, with: body, as: bodyType)
+            return requestData(with: request)
         } catch HTTPError.url {
             return errorPublisher(of: .url)
         } catch {

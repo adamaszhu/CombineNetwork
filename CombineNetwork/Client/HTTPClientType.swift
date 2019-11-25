@@ -30,6 +30,12 @@ public protocol HTTPClientType {
         with request: URLRequest,
         promoting businessErrorTypes: [BusinessError.Type]) -> AnyPublisher<[Object]?, HTTPError>
     
+    /// Request a data block
+    ///
+    /// - Parameter request: The URL request
+    /// - Returns: A data publisher
+    func requestData(with request: URLRequest) -> AnyPublisher<Data?, HTTPError>
+    
     /// Request an object
     ///
     /// - Parameters:
@@ -69,4 +75,22 @@ public protocol HTTPClientType {
         with body: RequestBody?,
         as bodyType: RequestBodyType?,
         promoting businessErrorTypes: [BusinessError.Type]) -> AnyPublisher<[Object]?, HTTPError>
+    
+    /// Request a data block
+    ///
+    /// - Parameters:
+    ///   - url: The URL
+    ///   - method: The HTTP method
+    ///   - header: The HTTP header
+    ///   - parameters: The URL parameters
+    ///   - body: The request body
+    ///   - bodyType: The type of the request body
+    /// - Returns: A data publisher
+    func requestData(
+        from url: URL,
+        using method: RequestMethod,
+        attaching header: RequestHeader?,
+        attaching parameters: URLParameters?,
+        with body: RequestBody?,
+        as bodyType: RequestBodyType?) -> AnyPublisher<Data?, HTTPError>
 }
