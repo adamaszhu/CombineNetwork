@@ -29,6 +29,11 @@ Publishers
       .receive(subscriber: subscriber)
 ```
 
+## Snippet
+To bridge CombineRx with ReactiveSwift, please use this snippet [CombineRx+Convertable.swift](Snippet/CombineRx+Convertable.swift)
+
+For ReactiveSwift 5.x please use this snippet [CombineRx+ReactiveSwift5.swift](Snippet/CombineRx+ReactiveSwift5.swift)
+
 ## WIP
 
 ### Publisher
