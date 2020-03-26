@@ -11,7 +11,7 @@ The way that we do this is to create a wrapper around RxSwift to offer Combine s
 
 **Q: What's the benefit of CombineRx?**
 
-**A**: Developers can write Combine code now for their applications to support all the iOS from 13 to 8 and when the time is right, they can do a global find and replace to replace all the `import CombineRx` by `import Combine` and everything will just work.
+**A**: Developers can write Combine code now for their applications to support all the iOS from 13 to 8 and when it's time to drop support for iOS 12, they can do a global find and replace to replace all the `import CombineRx` by `import Combine` and everything will just work.
 
 ## How to use
 ```swift
@@ -142,4 +142,3 @@ For ReactiveSwift 5.x please use this snippet [CombineRx+ReactiveSwift5.swift](S
 
 ## Future ideas
  - Create a bridge to RxSwift to ease the transition from RxSwift to Combine
- - Switch to the Apple Combine under the hood to gain performance for iOS 13 and above
