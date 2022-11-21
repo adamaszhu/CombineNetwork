@@ -1,10 +1,8 @@
-/// String+Constants.swift
-/// CombineNetwork
+/// String constants.
 ///
-/// - author: Adamas Zhu
-/// - date: 8/11/19
-/// - copyright: Copyright © 2019 Adamas Zhu. All rights reserved.
-
+/// - version: 1.0.0
+/// - date: 20/11/22
+/// - author: Adamas
 internal extension String {
     static let empty = ""
     static let and = "&"

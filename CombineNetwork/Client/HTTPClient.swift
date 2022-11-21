@@ -1,17 +1,11 @@
-
-/// HTTPClient.swift
-/// CombineNetwork
-///
-/// - author: Adamas Zhu
-/// - date: 8/11/19
-/// - copyright: Copyright © 2019 Adamas Zhu. All rights reserved.
-
-import CombineRx
-
 /// Manage HTTP requests
-open class HTTPClient: HTTPClientType {
+///
+/// - version: 1.0.0
+/// - date: 21/11/22
+/// - author: Adamas
+open class APIClient: APIClientType {
     
-    private let networkConnectionManager: NetworkConnectionManagerType
+    private let networkConnectionManager: NetworkHelperType
     private let session: URLSession
     
     /// Intiialize the client
@@ -20,137 +14,139 @@ open class HTTPClient: HTTPClientType {
     ///   - session: The URLSession configured, including SSL pinning
     ///   - networkConnectionManager: The network connection status manager
     public init(session: URLSession = URLSession.shared,
-                networkConnectionManager: NetworkConnectionManagerType = NetworkConnectionManager()) {
+                networkConnectionManager: NetworkHelperType = NetworkHelper()) {
         self.networkConnectionManager = networkConnectionManager
         self.session = session
     }
     
     public func requestObject<Object: Decodable>(
         with request: URLRequest,
-        promoting businessErrorTypes: [BusinessError.Type] = []) -> AnyPublisher<Object?, HTTPError> {
-        guard networkConnectionManager.isConnected else {
-            return Fail<Object?, HTTPError>(error: .network(.connection))
-                .eraseToAnyPublisher()
+        promoting businessErrorTypes: [any BusinessError.Type] = []) -> AnyPublisher<Object?, APIError> {
+            guard networkConnectionManager.isNetworkAvailable else {
+                return Fail<Object?, APIError>(error: .network(.connection))
+                    .eraseToAnyPublisher()
+            }
+            return session.dataTaskPublisher(for: request)
+                .detectNetworkError()
+                .detectBusinessError(in: businessErrorTypes)
+                .detectServerError()
+                .decodeObject()
         }
-        return session.dataTaskPublisher(for: request)
-            .mapNetworkError()
-            .catchBusinessError(businessErrorTypes)
-            .catchServerError()
-            .decodeObject()
-    }
     
     public func requestObjects<Object: Decodable>(
         with request: URLRequest,
-        promoting businessErrorTypes: [BusinessError.Type] = []) -> AnyPublisher<[Object]?, HTTPError> {
-        guard networkConnectionManager.isConnected else {
-            return Fail<[Object]?, HTTPError>(error: .network(.connection))
-                .eraseToAnyPublisher()
+        promoting businessErrorTypes: [any BusinessError.Type] = []) -> AnyPublisher<[Object]?, APIError> {
+            guard networkConnectionManager.isNetworkAvailable else {
+                return Fail<[Object]?, APIError>(error: .network(.connection))
+                    .eraseToAnyPublisher()
+            }
+            return session.dataTaskPublisher(for: request)
+                .detectNetworkError()
+                .detectBusinessError(in: businessErrorTypes)
+                .detectServerError()
+                .decodeObjects()
         }
-        return session.dataTaskPublisher(for: request)
-            .mapNetworkError()
-            .catchBusinessError(businessErrorTypes)
-            .catchServerError()
-            .decodeObjects()
-    }
     
-    public func requestData(with request: URLRequest) -> AnyPublisher<Data?, HTTPError> {
-        guard networkConnectionManager.isConnected else {
-            return Fail<Data?, HTTPError>(error: .network(.connection))
+    public func requestData(
+        with request: URLRequest,
+        promoting businessErrorTypes: [any BusinessError.Type]) -> AnyPublisher<Data?, APIError> {
+            guard networkConnectionManager.isNetworkAvailable else {
+                return Fail<Data?, APIError>(error: .network(.connection))
+                    .eraseToAnyPublisher()
+            }
+            return session.dataTaskPublisher(for: request)
+                .detectNetworkError()
+                .detectBusinessError(in: businessErrorTypes)
+                .detectServerError()
+                .map { $0.data }
                 .eraseToAnyPublisher()
         }
-        return session.dataTaskPublisher(for: request)
-            .mapNetworkError()
-            .catchServerError()
-            .map { $0.data }
-            .eraseToAnyPublisher()
-    }
     
     public func requestObject<Object: Decodable>(
         from url: URL,
         using method: RequestMethod,
-        attaching header: RequestHeader? = nil,
+        attaching header: RequestHeaders? = nil,
         attaching parameters: URLParameters? = nil,
         with body: RequestBody? = nil,
-        as bodyType: RequestBodyType? = nil,
-        promoting businessErrorTypes: [BusinessError.Type] = []) -> AnyPublisher<Object?, HTTPError> {
-        do {
-            let request = try self.request(from: url, using: method, attaching: header, attaching: parameters, with: body, as: bodyType)
-            return requestObject(with: request, promoting: businessErrorTypes)
-        } catch HTTPError.encoding {
-            return Fail<Object?, HTTPError>(error: .encoding)
-                .eraseToAnyPublisher()
-        } catch HTTPError.url {
-            return Fail<Object?, HTTPError>(error: .url)
-                .eraseToAnyPublisher()
-        } catch {
-            return Fail<Object?, HTTPError>(error: .unknown)
-                .eraseToAnyPublisher()
+        promoting businessErrorTypes: [any BusinessError.Type] = []) -> AnyPublisher<Object?, APIError> {
+            do {
+                let request = try self.request(from: url, using: method, attaching: header, attaching: parameters, with: body)
+                return requestObject(with: request, promoting: businessErrorTypes)
+            } catch APIError.encoding {
+                return Fail<Object?, APIError>(error: .encoding)
+                    .eraseToAnyPublisher()
+            } catch APIError.url {
+                return Fail<Object?, APIError>(error: .url)
+                    .eraseToAnyPublisher()
+            } catch {
+                return Fail<Object?, APIError>(error: .other)
+                    .eraseToAnyPublisher()
+            }
         }
-    }
     
     public func requestObjects<Object: Decodable>(
         from url: URL,
         using method: RequestMethod,
-        attaching header: RequestHeader? = nil,
+        attaching header: RequestHeaders? = nil,
         attaching parameters: URLParameters? = nil,
         with body: RequestBody? = nil,
-        as bodyType: RequestBodyType? = nil,
-        promoting businessErrorTypes: [BusinessError.Type] = []) -> AnyPublisher<[Object]?, HTTPError> {
-        do {
-            let request = try self.request(from: url, using: method, attaching: header, attaching: parameters, with: body, as: bodyType)
-            return requestObjects(with: request, promoting: businessErrorTypes)
-        } catch HTTPError.encoding {
-            return Fail<[Object]?, HTTPError>(error: .encoding)
-                .eraseToAnyPublisher()
-        } catch HTTPError.url {
-            return Fail<[Object]?, HTTPError>(error: .url)
-                .eraseToAnyPublisher()
-        } catch {
-            return Fail<[Object]?, HTTPError>(error: .unknown)
-                .eraseToAnyPublisher()
+        promoting businessErrorTypes: [any BusinessError.Type] = []) -> AnyPublisher<[Object]?, APIError> {
+            do {
+                let request = try self.request(from: url, using: method, attaching: header, attaching: parameters, with: body)
+                return requestObjects(with: request, promoting: businessErrorTypes)
+            } catch APIError.encoding {
+                return Fail<[Object]?, APIError>(error: .encoding)
+                    .eraseToAnyPublisher()
+            } catch APIError.url {
+                return Fail<[Object]?, APIError>(error: .url)
+                    .eraseToAnyPublisher()
+            } catch {
+                return Fail<[Object]?, APIError>(error: .other)
+                    .eraseToAnyPublisher()
+            }
         }
-    }
     
     public func requestData(
         from url: URL,
         using method: RequestMethod,
-        attaching header: RequestHeader?,
+        attaching header: RequestHeaders?,
         attaching parameters: URLParameters?,
         with body: RequestBody?,
-        as bodyType: RequestBodyType?) -> AnyPublisher<Data?, HTTPError> {
-        do {
-            let request = try self.request(from: url, using: method, attaching: header, attaching: parameters, with: body, as: bodyType)
-            return requestData(with: request)
-        } catch HTTPError.url {
-            return Fail<Data?, HTTPError>(error: .url)
-                .eraseToAnyPublisher()
-        } catch {
-            return Fail<Data?, HTTPError>(error: .unknown)
-                .eraseToAnyPublisher()
+        promoting businessErrorTypes: [any BusinessError.Type] = []) -> AnyPublisher<Data?, APIError> {
+            do {
+                let request = try self.request(from: url, using: method, attaching: header, attaching: parameters, with: body)
+                return requestData(with: request, promoting: businessErrorTypes)
+            } catch APIError.url {
+                return Fail<Data?, APIError>(error: .url)
+                    .eraseToAnyPublisher()
+            } catch {
+                return Fail<Data?, APIError>(error: .other)
+                    .eraseToAnyPublisher()
+            }
         }
-    }
     
     private func request(from url: URL,
                          using method: RequestMethod,
-                         attaching header: RequestHeader?,
+                         attaching header: RequestHeaders?,
                          attaching parameters: URLParameters?,
-                         with body: RequestBody?,
-                         as bodyType: RequestBodyType?) throws -> URLRequest {
+                         with body: RequestBody?) throws -> URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
         request.allHTTPHeaderFields = header
         
         if let parameters = parameters {
             guard let url = url.attaching(parameters) else {
-                throw HTTPError.url
+                throw APIError.url
             }
             request.url = url
         }
         
-        if let body = body, let bodyType = bodyType  {
-            request.allHTTPHeaderFields?["Content-Type"] = bodyType.contentType
-            guard let data = body.data(as: bodyType) else {
-                throw HTTPError.encoding
+        if let body = body {
+            if let contentType = body.contentType {
+                request.allHTTPHeaderFields?["Content-Type"] = contentType
+            }
+            guard let data = body.data else {
+                throw APIError.encoding
             }
             request.httpBody = data
         }
@@ -159,8 +155,7 @@ open class HTTPClient: HTTPClientType {
     }
 }
 
-/// The response type of a HTTP request
-public typealias DataTaskResponse = URLSession.CombineDataTaskPublisher.Output
 
 
-
+import Foundation
+import Combine
