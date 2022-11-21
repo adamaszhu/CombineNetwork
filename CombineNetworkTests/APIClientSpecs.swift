@@ -5,8 +5,9 @@ final class APIClientSpecs: QuickSpec {
                 it("publishes the object") {
                     let client = APIClient()
                     let url = URL(string: StarWarsAPI.main.path)!
+                    let request = URLRequest(url: url)
                     let result: PublisherResult<StarWars?, APIError> =
-                    client.requestObject(from: url, using: .get)
+                    client.requestObject(using: request)
                         .test()
                     expect(result.outputs.first??.people)
                         .toEventually(equal(Self.peopleEndpoint),
@@ -23,6 +24,23 @@ final class APIClientSpecs: QuickSpec {
                     let client = APIClient()
                     let result: PublisherResult<StarWars?, APIError> =
                     client.requestObject(from: StarWarsAPI.main)
+                        .test()
+                    expect(result.outputs.first??.people)
+                        .toEventually(equal(Self.peopleEndpoint),
+                                      timeout: Self.timeout)
+                    expect(result.failure)
+                        .toEventually(beNil(),
+                                      timeout: Self.timeout)
+                }
+            }
+        }
+        describe("calls requestObject with details") {
+            context("with a valid response") {
+                it("publishes the object") {
+                    let client = APIClient()
+                    let url = URL(string: StarWarsAPI.main.path)!
+                    let result: PublisherResult<StarWars?, APIError> =
+                    client.requestObject(from: url, using: .get)
                         .test()
                     expect(result.outputs.first??.people)
                         .toEventually(equal(Self.peopleEndpoint),
