@@ -4,13 +4,13 @@
 import PackageDescription
 
 let package = Package(
-    name: "CombineUtility",
+    name: "CombineNetwork",
     defaultLocalization: "en",
     platforms: [
         .iOS(.v13)
     ],
     products: [
-        .library(name: "CombineUtility", targets: ["CombineUtility"])
+        .library(name: "CombineNetwork", targets: ["CombineNetwork"])
     ],
     dependencies: [
         .package(url: "https://github.com/adamaszhu/CombineUtility", .upToNextMajor(from: "1.0.3")),
@@ -18,13 +18,14 @@ let package = Package(
         .package(url: "https://github.com/Quick/Nimble", .upToNextMajor(from: "10.0.0"))
     ],
     targets: [
-        .target(name: "CombineUtility",
-                path: "CombineUtility"),
+        .target(name: "CombineNetwork",
+                dependencies: ["CombineUtility"],
+                path: "CombineNetwork"),
         .testTarget(
-            name: "CombineUtilityTests",
+            name: "CombineNetworkTests",
             dependencies: ["CombineUtility",
                            "Nimble",
                            "Quick"],
-            path: "CombineUtilityTests"),
+            path: "CombineNetworkTests"),
     ]
 )
