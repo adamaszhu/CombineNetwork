@@ -3,7 +3,8 @@
 /// - version: 1.0.0
 /// - date: 20/11/22
 /// - author: Adamas
-public enum RequestBodyType: String {
+public enum ContentType: String {
     case json = "application/json"
     case form = "application/x-www-form-urlencoded"
+    case html = "text/html"
 }
