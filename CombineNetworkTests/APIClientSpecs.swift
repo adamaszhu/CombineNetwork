@@ -4,7 +4,7 @@ final class APIClientSpecs: QuickSpec {
             context("with a valid response") {
                 it("publishes the object") {
                     let client = APIClient()
-                    let url = URL(string: StarWarsAPI.main.path)!
+                    let url = URL(string: StarWarsAPI.main.server.endpoint + StarWarsAPI.main.path)!
                     let request = URLRequest(url: url)
                     let result: PublisherResult<StarWars?, APIError> =
                     client.requestObject(using: request)
@@ -38,7 +38,7 @@ final class APIClientSpecs: QuickSpec {
             context("with a valid response") {
                 it("publishes the object") {
                     let client = APIClient()
-                    let url = URL(string: StarWarsAPI.main.path)!
+                    let url = URL(string: StarWarsAPI.main.server.endpoint + StarWarsAPI.main.path)!
                     let result: PublisherResult<StarWars?, APIError> =
                     client.requestObject(from: url, using: .get)
                         .test()

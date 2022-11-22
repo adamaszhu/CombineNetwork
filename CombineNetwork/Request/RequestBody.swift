@@ -5,7 +5,7 @@
 /// - author: Adamas
 public enum RequestBody {
     
-    case dictionary(_ dictionary: [String: Any], bodyType: RequestBodyType)
+    case dictionary(_ dictionary: [String: Any], bodyType: ContentType)
     case array(_ array: [Any])
     case object(_ object: Encodable)
     case data(_ data: Data)
@@ -21,6 +21,8 @@ public enum RequestBody {
                 return try? JSONSerialization.data(withJSONObject: dictionary, options: .prettyPrinted)
             case .dictionary(let dictionary, .form):
                 return dictionary.form.data(using: .utf8)
+            case .dictionary(_, bodyType: _):
+                return nil
             case .object(let object):
                 return try? JSONEncoder().encode(object)
         }
@@ -32,7 +34,7 @@ public enum RequestBody {
             case .data:
                 return nil
             case .array, .object:
-                return RequestBodyType.json.rawValue
+                return ContentType.json.rawValue
             case .dictionary(_, let bodyType):
                 return bodyType.rawValue
         }
