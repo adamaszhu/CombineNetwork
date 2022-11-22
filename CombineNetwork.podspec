@@ -5,7 +5,7 @@ s.ios.deployment_target = '13.0'
 s.name = "CombineNetwork"
 s.summary = "CombineNetwork allows a project to construct the network layer using Combine before iOS 13."
 s.requires_arc = true
-s.version = "1.0.5"
+s.version = "1.0.6"
 s.license = { :type => "MIT", :file => "LICENSE" }
 s.author = { "Adamas Zhu" => "developer@adamaszhu.com" }
 s.homepage = "https://github.com/adamaszhu/CombineNetwork"
