@@ -211,7 +211,13 @@ public extension APIClientType {
     /// - Parameter api: The API
     /// - Returns: A request publisher
     private func requestPublisher(from api: API) -> AnyPublisher<URLRequest, APIError> {
-        guard let url = URL(string: api.path) else {
+        let url: URL?
+        if #available(iOS 16.0, *) {
+            url = URL(string: api.server.endpoint)?.appending(path: api.path)
+        } else {
+            url = URL(string: api.server.endpoint)?.appendingPathComponent(api.path)
+        }
+        guard let url = url else {
             return Fail<URLRequest, APIError>(error: .url).eraseToAnyPublisher()
         }
         return requestPublisher(from: url,

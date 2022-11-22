@@ -4,6 +4,7 @@
 /// - date: 20/11/22
 /// - author: Adamas
 public protocol API {
+    var server: Server { get }
     var path: String { get }
     var method: RequestMethod { get }
     var body: RequestBody? { get }

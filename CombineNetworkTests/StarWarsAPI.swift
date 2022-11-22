@@ -1,10 +1,14 @@
 enum StarWarsAPI: API {
     case main
 
+    var server: Server {
+        StarWarsServer.main
+    }
+
     var path: String {
         switch self {
             case .main:
-                return "https://swapi.dev/api/"
+                return "/api"
         }
     }
 
