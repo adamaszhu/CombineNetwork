@@ -7,6 +7,7 @@ public enum RequestBody {
     
     case dictionary(_ dictionary: [String: Any], bodyType: RequestBodyType)
     case array(_ array: [Any])
+    case object(_ object: Encodable)
     case data(_ data: Data)
     
     /// Convert the body to a Data object
@@ -20,6 +21,8 @@ public enum RequestBody {
                 return try? JSONSerialization.data(withJSONObject: dictionary, options: .prettyPrinted)
             case .dictionary(let dictionary, .form):
                 return dictionary.form.data(using: .utf8)
+            case .object(let object):
+                return try? JSONEncoder().encode(object)
         }
     }
 
@@ -28,7 +31,7 @@ public enum RequestBody {
         switch self {
             case .data:
                 return nil
-            case .array:
+            case .array, .object:
                 return RequestBodyType.json.rawValue
             case .dictionary(_, let bodyType):
                 return bodyType.rawValue
