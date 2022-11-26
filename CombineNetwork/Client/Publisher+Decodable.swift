@@ -6,11 +6,8 @@
 internal extension AnyPublisher where Output == DataTaskResponse, Failure == APIError {
 
     /// Decode the response into an object
-    func decodeObject<Object: Decodable>() -> AnyPublisher<Object?, APIError> {
+    func decodeObject<Object: Decodable>() -> AnyPublisher<Object, APIError> {
         tryMap { response in
-            guard !response.data.isEmpty else {
-                return nil
-            }
             do {
                 return try JSONDecoder().decode(Object.self, from: response.data)
             } catch {
@@ -21,11 +18,8 @@ internal extension AnyPublisher where Output == DataTaskResponse, Failure == API
     }
 
     /// Decode the response into an object array
-    func decodeObjects<Object: Decodable>() -> AnyPublisher<[Object]?, APIError> {
+    func decodeObjects<Object: Decodable>() -> AnyPublisher<[Object], APIError> {
         tryMap { response in
-            guard !response.data.isEmpty else {
-                return nil
-            }
             do {
                 return try JSONDecoder().decode([Object].self, from: response.data)
             } catch {

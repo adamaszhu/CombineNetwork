@@ -13,7 +13,7 @@ public protocol APIClientType {
     /// - Returns: An object publisher
     func requestObject<Object: Decodable>(
         using request: URLRequest,
-        promoting businessErrorTypes: [any BusinessError.Type]) -> AnyPublisher<Object?, APIError>
+        promoting businessErrorTypes: [any BusinessError.Type]) -> AnyPublisher<Object, APIError>
 
     /// Request a list of objects
     ///
@@ -23,7 +23,7 @@ public protocol APIClientType {
     /// - Returns: An object list publisher
     func requestObjects<Object: Decodable>(
         using request: URLRequest,
-        promoting businessErrorTypes: [any BusinessError.Type]) -> AnyPublisher<[Object]?, APIError>
+        promoting businessErrorTypes: [any BusinessError.Type]) -> AnyPublisher<[Object], APIError>
 
     /// Request a data block
     ///
@@ -33,7 +33,7 @@ public protocol APIClientType {
     /// - Returns: A data publisher
     func requestData(
         using request: URLRequest,
-        promoting businessErrorTypes: [any BusinessError.Type]) -> AnyPublisher<Data?, APIError>
+        promoting businessErrorTypes: [any BusinessError.Type]) -> AnyPublisher<Data, APIError>
 }
 
 public extension APIClientType {
@@ -55,7 +55,7 @@ public extension APIClientType {
         attaching header: RequestHeaders? = nil,
         and parameters: URLParameters? = nil,
         with body: RequestBody? = nil,
-        promoting businessErrorTypes: [any BusinessError.Type] = []) -> AnyPublisher<Object?, APIError> {
+        promoting businessErrorTypes: [any BusinessError.Type] = []) -> AnyPublisher<Object, APIError> {
             requestPublisher(from: url,
                              using: method,
                              attaching: header,
@@ -82,7 +82,7 @@ public extension APIClientType {
         attaching header: RequestHeaders? = nil,
         and parameters: URLParameters? = nil,
         with body: RequestBody? = nil,
-        promoting businessErrorTypes: [any BusinessError.Type] = []) -> AnyPublisher<[Object]?, APIError> {
+        promoting businessErrorTypes: [any BusinessError.Type] = []) -> AnyPublisher<[Object], APIError> {
             requestPublisher(from: url,
                              using: method,
                              attaching: header,
@@ -109,7 +109,7 @@ public extension APIClientType {
         attaching header: RequestHeaders? = nil,
         and parameters: URLParameters? = nil,
         with body: RequestBody? = nil,
-        promoting businessErrorTypes: [any BusinessError.Type] = []) -> AnyPublisher<Data?, APIError> {
+        promoting businessErrorTypes: [any BusinessError.Type] = []) -> AnyPublisher<Data, APIError> {
             requestPublisher(from: url,
                              using: method,
                              attaching: header,
@@ -127,7 +127,7 @@ public extension APIClientType {
     /// - Returns: An object publisher
     func requestObject<Object: Decodable>(
         from api: API,
-        promoting businessErrorTypes: [any BusinessError.Type] = []) -> AnyPublisher<Object?, APIError> {
+        promoting businessErrorTypes: [any BusinessError.Type] = []) -> AnyPublisher<Object, APIError> {
             requestPublisher(from: api)
                 .flatMap { self.requestObject(using: $0, promoting: businessErrorTypes) }
                 .eraseToAnyPublisher()
@@ -141,7 +141,7 @@ public extension APIClientType {
     /// - Returns: An object publisher
     func requestObjects<Object: Decodable>(
         from api: API,
-        promoting businessErrorTypes: [any BusinessError.Type] = []) -> AnyPublisher<[Object]?, APIError> {
+        promoting businessErrorTypes: [any BusinessError.Type] = []) -> AnyPublisher<[Object], APIError> {
             requestPublisher(from: api)
                 .flatMap { self.requestObjects(using: $0, promoting: businessErrorTypes) }
                 .eraseToAnyPublisher()
@@ -155,7 +155,7 @@ public extension APIClientType {
     /// - Returns: An object publisher
     func requestData(
         from api: API,
-        promoting businessErrorTypes: [any BusinessError.Type] = []) -> AnyPublisher<Data?, APIError> {
+        promoting businessErrorTypes: [any BusinessError.Type] = []) -> AnyPublisher<Data, APIError> {
             requestPublisher(from: api)
                 .flatMap { self.requestData(using: $0, promoting: businessErrorTypes) }
                 .eraseToAnyPublisher()
