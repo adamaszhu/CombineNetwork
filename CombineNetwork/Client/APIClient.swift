@@ -21,21 +21,21 @@ open class APIClient: APIClientType {
     
     public func requestObject<Object: Decodable>(
         using request: URLRequest,
-        promoting businessErrorTypes: [any BusinessError.Type] = []) -> AnyPublisher<Object?, APIError> {
+        promoting businessErrorTypes: [any BusinessError.Type] = []) -> AnyPublisher<Object, APIError> {
             dataTaskPublisher(request, promoting: businessErrorTypes)
                 .decodeObject()
         }
     
     public func requestObjects<Object: Decodable>(
         using request: URLRequest,
-        promoting businessErrorTypes: [any BusinessError.Type] = []) -> AnyPublisher<[Object]?, APIError> {
+        promoting businessErrorTypes: [any BusinessError.Type] = []) -> AnyPublisher<[Object], APIError> {
             dataTaskPublisher(request, promoting: businessErrorTypes)
                 .decodeObjects()
         }
     
     public func requestData(
         using request: URLRequest,
-        promoting businessErrorTypes: [any BusinessError.Type]) -> AnyPublisher<Data?, APIError> {
+        promoting businessErrorTypes: [any BusinessError.Type]) -> AnyPublisher<Data, APIError> {
             dataTaskPublisher(request, promoting: businessErrorTypes)
                 .map { $0.data }
                 .eraseToAnyPublisher()
