@@ -11,7 +11,7 @@ internal extension AnyPublisher where Output == DataTaskResponse, Failure == API
             do {
                 return try JSONDecoder().decode(Object.self, from: response.data)
             } catch {
-                throw APIError.decoding
+                throw APIError.decoding(detail: error.localizedDescription)
             }
         }
         .mapError(into: APIError.other)
@@ -23,7 +23,7 @@ internal extension AnyPublisher where Output == DataTaskResponse, Failure == API
             do {
                 return try JSONDecoder().decode([Object].self, from: response.data)
             } catch {
-                throw APIError.decoding
+                throw APIError.decoding(detail: error.localizedDescription)
             }
         }
         .mapError(into: APIError.other)
