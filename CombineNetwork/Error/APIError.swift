@@ -4,7 +4,7 @@
 /// - date: 19/11/22
 /// - author: Adamas
 public enum APIError: Error {
-    case decoding
+    case decoding(detail: String)
     case encoding
     case url
     case network(_ error: NetworkError)
@@ -33,3 +33,23 @@ extension APIError: Equatable {
         }
     }
 }
+
+extension APIError: LocalizedError {
+    
+    public var errorDescription: String? {
+        switch self {
+            case .decoding(let detail):
+                return detail
+            case .encoding, .url, .other:
+                return String(describing: self)
+            case .network(let networkError):
+                return String(describing: networkError)
+            case .http(let httpError):
+                return String(describing: httpError)
+            case .business(let businessError):
+                return businessError.localizedDescription
+        }
+    }
+}
+
+import Foundation
