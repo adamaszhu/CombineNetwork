@@ -1,6 +1,292 @@
 {
   "warnings": [
-
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Error/APIError.swift",
+      "line": 7,
+      "symbol": "APIError.decoding(detail:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Error/APIError.swift",
+      "line": 8,
+      "symbol": "APIError.encoding",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Error/APIError.swift",
+      "line": 9,
+      "symbol": "APIError.url",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Error/APIError.swift",
+      "line": 10,
+      "symbol": "APIError.network(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Error/APIError.swift",
+      "line": 11,
+      "symbol": "APIError.http(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Error/APIError.swift",
+      "line": 12,
+      "symbol": "APIError.business(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Error/APIError.swift",
+      "line": 13,
+      "symbol": "APIError.other",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Error/BusinessError.swift",
+      "line": 8,
+      "symbol": "BusinessError.init(response:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Error/HTTPError.swift",
+      "line": 9,
+      "symbol": "HTTPError.badRequest",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Error/HTTPError.swift",
+      "line": 10,
+      "symbol": "HTTPError.unauthorized",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Error/HTTPError.swift",
+      "line": 11,
+      "symbol": "HTTPError.forbidden",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Error/HTTPError.swift",
+      "line": 12,
+      "symbol": "HTTPError.notFound",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Error/HTTPError.swift",
+      "line": 13,
+      "symbol": "HTTPError.unprocessableEntity",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Error/HTTPError.swift",
+      "line": 14,
+      "symbol": "HTTPError.internalServer",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Error/HTTPError.swift",
+      "line": 15,
+      "symbol": "HTTPError.badGateway",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Error/HTTPError.swift",
+      "line": 16,
+      "symbol": "HTTPError.serviceUnavailable",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Error/HTTPError.swift",
+      "line": 17,
+      "symbol": "HTTPError.gatewayTimeout",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Error/HTTPError.swift",
+      "line": 18,
+      "symbol": "HTTPError.other",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Error/NetworkError.swift",
+      "line": 14,
+      "symbol": "NetworkError.other",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Request/API.swift",
+      "line": 7,
+      "symbol": "API.server",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Request/API.swift",
+      "line": 8,
+      "symbol": "API.path",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Request/API.swift",
+      "line": 9,
+      "symbol": "API.method",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Request/API.swift",
+      "line": 10,
+      "symbol": "API.body",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Request/API.swift",
+      "line": 11,
+      "symbol": "API.parameters",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Request/API.swift",
+      "line": 12,
+      "symbol": "API.headers",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Request/API.swift",
+      "line": 17,
+      "symbol": "API.body",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Request/API.swift",
+      "line": 19,
+      "symbol": "API.parameters",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Request/API.swift",
+      "line": 21,
+      "symbol": "API.headers",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Request/ContentType.swift",
+      "line": 7,
+      "symbol": "ContentType.json",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Request/ContentType.swift",
+      "line": 8,
+      "symbol": "ContentType.form",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Request/ContentType.swift",
+      "line": 9,
+      "symbol": "ContentType.html",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Request/HeaderFieldType.swift",
+      "line": 7,
+      "symbol": "HeaderFieldType.contentType",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Request/RequestBody.swift",
+      "line": 8,
+      "symbol": "RequestBody.dictionary(_:bodyType:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Request/RequestBody.swift",
+      "line": 9,
+      "symbol": "RequestBody.array(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Request/RequestBody.swift",
+      "line": 10,
+      "symbol": "RequestBody.object(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Request/RequestBody.swift",
+      "line": 11,
+      "symbol": "RequestBody.data(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Request/RequestMethod.swift",
+      "line": 7,
+      "symbol": "RequestMethod.get",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Request/RequestMethod.swift",
+      "line": 8,
+      "symbol": "RequestMethod.post",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Request/RequestMethod.swift",
+      "line": 9,
+      "symbol": "RequestMethod.put",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Request/RequestMethod.swift",
+      "line": 10,
+      "symbol": "RequestMethod.delete",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamaszhu/Documents/Project/CombineNetwork/CombineNetwork/Request/Server.swift",
+      "line": 7,
+      "symbol": "Server.endpoint",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    }
   ],
   "source_directory": "/Users/adamaszhu/Documents/Project/CombineNetwork"
 }
