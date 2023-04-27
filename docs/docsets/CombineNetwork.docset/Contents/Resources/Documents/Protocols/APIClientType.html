@@ -17,7 +17,7 @@
     <a title="APIClientType Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">CombineNetwork 1.0.8 Docs</a> (0% documented)</p>
+        <p><a href="../index.html">CombineNetwork 1.0.9 Docs</a> (55% documented)</p>
         <div class="header-right">
           <form role="search" action="../search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -112,13 +112,13 @@
             <a href="../Typealiases.html">Type Aliases</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Typealiases.html#/DataTaskResponse">DataTaskResponse</a>
+                <a href="../Typealiases.html#/s:14CombineNetwork16DataTaskResponsea">DataTaskResponse</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Typealiases.html#/RequestHeaders">RequestHeaders</a>
+                <a href="../Typealiases.html#/s:14CombineNetwork14RequestHeadersa">RequestHeaders</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Typealiases.html#/URLParameters">URLParameters</a>
+                <a href="../Typealiases.html#/s:14CombineNetwork13URLParametersa">URLParameters</a>
               </li>
             </ul>
           </li>
@@ -128,6 +128,13 @@
         <section>
           <section class="section">
             <h1>APIClientType</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">APIClientType</span></code></pre>
+
+                </div>
+              </div>
             <p>Define an APIClient</p>
 <div class="aside aside-version">
     <p class="aside-title">Version</p>
@@ -150,9 +157,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:14CombineNetwork13APIClientTypeP13requestObject5using9promoting0A012AnyPublisherVyqd__AA8APIErrorOG10Foundation10URLRequestV_SayAA13BusinessError_pXpGtSeRd__lF"></a>
                     <a name="//apple_ref/swift/Method/requestObject(using:promoting:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">requestObject(using:<wbr>promoting:<wbr>)</a>
+                    <a class="token" href="#/s:14CombineNetwork13APIClientTypeP13requestObject5using9promoting0A012AnyPublisherVyqd__AA8APIErrorOG10Foundation10URLRequestV_SayAA13BusinessError_pXpGtSeRd__lF">requestObject(using:<wbr>promoting:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -163,15 +170,60 @@
                         <p>Request an object</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="n">requestObject</span><span class="o">&lt;</span><span class="kt">Object</span><span class="p">:</span> <span class="kt">Decodable</span><span class="o">&gt;</span><span class="p">(</span>
+    <span class="n">using</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">URLRequest</span><span class="p">,</span>
+    <span class="n">promoting</span> <span class="nv">businessErrorTypes</span><span class="p">:</span> <span class="p">[</span><span class="n">any</span> <span class="kt"><a href="../Protocols/BusinessError.html">BusinessError</a></span><span class="o">.</span><span class="k">Type</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">Object</span><span class="p">,</span> <span class="kt"><a href="../Enums/APIError.html">APIError</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>request</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The URL request</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>businessErrorTypes</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>All types of BusinessError that should be detected</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An object publisher</p>
+                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:14CombineNetwork13APIClientTypeP14requestObjects5using9promoting0A012AnyPublisherVySayqd__GAA8APIErrorOG10Foundation10URLRequestV_SayAA13BusinessError_pXpGtSeRd__lF"></a>
                     <a name="//apple_ref/swift/Method/requestObjects(using:promoting:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">requestObjects(using:<wbr>promoting:<wbr>)</a>
+                    <a class="token" href="#/s:14CombineNetwork13APIClientTypeP14requestObjects5using9promoting0A012AnyPublisherVySayqd__GAA8APIErrorOG10Foundation10URLRequestV_SayAA13BusinessError_pXpGtSeRd__lF">requestObjects(using:<wbr>promoting:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -182,15 +234,60 @@
                         <p>Request a list of objects</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="n">requestObjects</span><span class="o">&lt;</span><span class="kt">Object</span><span class="p">:</span> <span class="kt">Decodable</span><span class="o">&gt;</span><span class="p">(</span>
+    <span class="n">using</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">URLRequest</span><span class="p">,</span>
+    <span class="n">promoting</span> <span class="nv">businessErrorTypes</span><span class="p">:</span> <span class="p">[</span><span class="n">any</span> <span class="kt"><a href="../Protocols/BusinessError.html">BusinessError</a></span><span class="o">.</span><span class="k">Type</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="p">[</span><span class="kt">Object</span><span class="p">],</span> <span class="kt"><a href="../Enums/APIError.html">APIError</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>request</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The URL request</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>businessErrorTypes</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>All types of BusinessError that should be detected</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An object list publisher</p>
+                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:14CombineNetwork13APIClientTypeP11requestData5using9promoting0A012AnyPublisherVy10Foundation0F0VAA8APIErrorOGAJ10URLRequestV_SayAA13BusinessError_pXpGtF"></a>
                     <a name="//apple_ref/swift/Method/requestData(using:promoting:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">requestData(using:<wbr>promoting:<wbr>)</a>
+                    <a class="token" href="#/s:14CombineNetwork13APIClientTypeP11requestData5using9promoting0A012AnyPublisherVy10Foundation0F0VAA8APIErrorOGAJ10URLRequestV_SayAA13BusinessError_pXpGtF">requestData(using:<wbr>promoting:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -201,15 +298,60 @@
                         <p>Request a data block</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">requestData</span><span class="p">(</span>
+    <span class="n">using</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">URLRequest</span><span class="p">,</span>
+    <span class="n">promoting</span> <span class="nv">businessErrorTypes</span><span class="p">:</span> <span class="p">[</span><span class="n">any</span> <span class="kt"><a href="../Protocols/BusinessError.html">BusinessError</a></span><span class="o">.</span><span class="k">Type</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">Data</span><span class="p">,</span> <span class="kt"><a href="../Enums/APIError.html">APIError</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>request</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The URL request</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>businessErrorTypes</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>All types of BusinessError that should be detected</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A data publisher</p>
+                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:14CombineNetwork13APIClientTypePAAE13requestObject4from5using9attaching3and4with9promoting0A012AnyPublisherVyqd__AA8APIErrorOG10Foundation3URLV_AA13RequestMethodOSDyS2SGSgSaySS3key_SS5valuetGSgAA0R4BodyOSgSayAA13BusinessError_pXpGtSeRd__lF"></a>
                     <a name="//apple_ref/swift/Method/requestObject(from:using:attaching:and:with:promoting:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">requestObject(from:<wbr>using:<wbr>attaching:<wbr>and:<wbr>with:<wbr>promoting:<wbr>)</a>
+                    <a class="token" href="#/s:14CombineNetwork13APIClientTypePAAE13requestObject4from5using9attaching3and4with9promoting0A012AnyPublisherVyqd__AA8APIErrorOG10Foundation3URLV_AA13RequestMethodOSDyS2SGSgSaySS3key_SS5valuetGSgAA0R4BodyOSgSayAA13BusinessError_pXpGtSeRd__lF">requestObject(from:<wbr>using:<wbr>attaching:<wbr>and:<wbr>with:<wbr>promoting:<wbr>)</a>
                     </code>
                       <span class="declaration-note">
                         Extension method
@@ -223,15 +365,124 @@
                         <p>Request an object</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="n">requestObject</span><span class="o">&lt;</span><span class="kt">Object</span><span class="p">:</span> <span class="kt">Decodable</span><span class="o">&gt;</span><span class="p">(</span>
+    <span class="n">from</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span>
+    <span class="n">using</span> <span class="nv">method</span><span class="p">:</span> <span class="kt"><a href="../Enums/RequestMethod.html">RequestMethod</a></span><span class="p">,</span>
+    <span class="n">attaching</span> <span class="nv">header</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:14CombineNetwork14RequestHeadersa">RequestHeaders</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="n">and</span> <span class="nv">parameters</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:14CombineNetwork13URLParametersa">URLParameters</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="n">with</span> <span class="nv">body</span><span class="p">:</span> <span class="kt"><a href="../Enums/RequestBody.html">RequestBody</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="n">promoting</span> <span class="nv">businessErrorTypes</span><span class="p">:</span> <span class="p">[</span><span class="n">any</span> <span class="kt"><a href="../Protocols/BusinessError.html">BusinessError</a></span><span class="o">.</span><span class="k">Type</span><span class="p">]</span> <span class="o">=</span> <span class="p">[])</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">Object</span><span class="p">,</span> <span class="kt"><a href="../Enums/APIError.html">APIError</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>url</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The URL</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>method</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The HTTP method</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>header</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The HTTP header</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>parameters</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The URL parameters</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>body</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The request body</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>bodyType</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The type of the request body</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>businessErrorTypes</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>All types of BusinessError that should be detected</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An object publisher</p>
+                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:14CombineNetwork13APIClientTypePAAE14requestObjects4from5using9attaching3and4with9promoting0A012AnyPublisherVySayqd__GAA8APIErrorOG10Foundation3URLV_AA13RequestMethodOSDyS2SGSgSaySS3key_SS5valuetGSgAA0R4BodyOSgSayAA13BusinessError_pXpGtSeRd__lF"></a>
                     <a name="//apple_ref/swift/Method/requestObjects(from:using:attaching:and:with:promoting:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">requestObjects(from:<wbr>using:<wbr>attaching:<wbr>and:<wbr>with:<wbr>promoting:<wbr>)</a>
+                    <a class="token" href="#/s:14CombineNetwork13APIClientTypePAAE14requestObjects4from5using9attaching3and4with9promoting0A012AnyPublisherVySayqd__GAA8APIErrorOG10Foundation3URLV_AA13RequestMethodOSDyS2SGSgSaySS3key_SS5valuetGSgAA0R4BodyOSgSayAA13BusinessError_pXpGtSeRd__lF">requestObjects(from:<wbr>using:<wbr>attaching:<wbr>and:<wbr>with:<wbr>promoting:<wbr>)</a>
                     </code>
                       <span class="declaration-note">
                         Extension method
@@ -255,15 +506,29 @@
 // - Returns: An object list publisher</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="n">requestObjects</span><span class="o">&lt;</span><span class="kt">Object</span><span class="p">:</span> <span class="kt">Decodable</span><span class="o">&gt;</span><span class="p">(</span>
+    <span class="n">from</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span>
+    <span class="n">using</span> <span class="nv">method</span><span class="p">:</span> <span class="kt"><a href="../Enums/RequestMethod.html">RequestMethod</a></span><span class="p">,</span>
+    <span class="n">attaching</span> <span class="nv">header</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:14CombineNetwork14RequestHeadersa">RequestHeaders</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="n">and</span> <span class="nv">parameters</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:14CombineNetwork13URLParametersa">URLParameters</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="n">with</span> <span class="nv">body</span><span class="p">:</span> <span class="kt"><a href="../Enums/RequestBody.html">RequestBody</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="n">promoting</span> <span class="nv">businessErrorTypes</span><span class="p">:</span> <span class="p">[</span><span class="n">any</span> <span class="kt"><a href="../Protocols/BusinessError.html">BusinessError</a></span><span class="o">.</span><span class="k">Type</span><span class="p">]</span> <span class="o">=</span> <span class="p">[])</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="p">[</span><span class="kt">Object</span><span class="p">],</span> <span class="kt"><a href="../Enums/APIError.html">APIError</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:14CombineNetwork13APIClientTypePAAE11requestData4from5using9attaching3and4with9promoting0A012AnyPublisherVy10Foundation0F0VAA8APIErrorOGAN3URLV_AA13RequestMethodOSDyS2SGSgSaySS3key_SS5valuetGSgAA0R4BodyOSgSayAA13BusinessError_pXpGtF"></a>
                     <a name="//apple_ref/swift/Method/requestData(from:using:attaching:and:with:promoting:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">requestData(from:<wbr>using:<wbr>attaching:<wbr>and:<wbr>with:<wbr>promoting:<wbr>)</a>
+                    <a class="token" href="#/s:14CombineNetwork13APIClientTypePAAE11requestData4from5using9attaching3and4with9promoting0A012AnyPublisherVy10Foundation0F0VAA8APIErrorOGAN3URLV_AA13RequestMethodOSDyS2SGSgSaySS3key_SS5valuetGSgAA0R4BodyOSgSayAA13BusinessError_pXpGtF">requestData(from:<wbr>using:<wbr>attaching:<wbr>and:<wbr>with:<wbr>promoting:<wbr>)</a>
                     </code>
                       <span class="declaration-note">
                         Extension method
@@ -287,15 +552,29 @@
 // - Returns: A data publisher</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">requestData</span><span class="p">(</span>
+    <span class="n">from</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span>
+    <span class="n">using</span> <span class="nv">method</span><span class="p">:</span> <span class="kt"><a href="../Enums/RequestMethod.html">RequestMethod</a></span><span class="p">,</span>
+    <span class="n">attaching</span> <span class="nv">header</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:14CombineNetwork14RequestHeadersa">RequestHeaders</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="n">and</span> <span class="nv">parameters</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:14CombineNetwork13URLParametersa">URLParameters</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="n">with</span> <span class="nv">body</span><span class="p">:</span> <span class="kt"><a href="../Enums/RequestBody.html">RequestBody</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="n">promoting</span> <span class="nv">businessErrorTypes</span><span class="p">:</span> <span class="p">[</span><span class="n">any</span> <span class="kt"><a href="../Protocols/BusinessError.html">BusinessError</a></span><span class="o">.</span><span class="k">Type</span><span class="p">]</span> <span class="o">=</span> <span class="p">[])</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">Data</span><span class="p">,</span> <span class="kt"><a href="../Enums/APIError.html">APIError</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:14CombineNetwork13APIClientTypePAAE13requestObject4from9promoting0A012AnyPublisherVyqd__AA8APIErrorOGAA3API_p_SayAA13BusinessError_pXpGtSeRd__lF"></a>
                     <a name="//apple_ref/swift/Method/requestObject(from:promoting:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">requestObject(from:<wbr>promoting:<wbr>)</a>
+                    <a class="token" href="#/s:14CombineNetwork13APIClientTypePAAE13requestObject4from9promoting0A012AnyPublisherVyqd__AA8APIErrorOGAA3API_p_SayAA13BusinessError_pXpGtSeRd__lF">requestObject(from:<wbr>promoting:<wbr>)</a>
                     </code>
                       <span class="declaration-note">
                         Extension method
@@ -309,15 +588,60 @@
                         <p>Request an object</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="n">requestObject</span><span class="o">&lt;</span><span class="kt">Object</span><span class="p">:</span> <span class="kt">Decodable</span><span class="o">&gt;</span><span class="p">(</span>
+    <span class="n">from</span> <span class="nv">api</span><span class="p">:</span> <span class="kt"><a href="../Protocols/API.html">API</a></span><span class="p">,</span>
+    <span class="n">promoting</span> <span class="nv">businessErrorTypes</span><span class="p">:</span> <span class="p">[</span><span class="n">any</span> <span class="kt"><a href="../Protocols/BusinessError.html">BusinessError</a></span><span class="o">.</span><span class="k">Type</span><span class="p">]</span> <span class="o">=</span> <span class="p">[])</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">Object</span><span class="p">,</span> <span class="kt"><a href="../Enums/APIError.html">APIError</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>api</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The API</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>businessErrorTypes</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>All types of BusinessError that should be detected</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An object publisher</p>
+                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:14CombineNetwork13APIClientTypePAAE14requestObjects4from9promoting0A012AnyPublisherVySayqd__GAA8APIErrorOGAA3API_p_SayAA13BusinessError_pXpGtSeRd__lF"></a>
                     <a name="//apple_ref/swift/Method/requestObjects(from:promoting:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">requestObjects(from:<wbr>promoting:<wbr>)</a>
+                    <a class="token" href="#/s:14CombineNetwork13APIClientTypePAAE14requestObjects4from9promoting0A012AnyPublisherVySayqd__GAA8APIErrorOGAA3API_p_SayAA13BusinessError_pXpGtSeRd__lF">requestObjects(from:<wbr>promoting:<wbr>)</a>
                     </code>
                       <span class="declaration-note">
                         Extension method
@@ -331,15 +655,60 @@
                         <p>Request a list of object</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="n">requestObjects</span><span class="o">&lt;</span><span class="kt">Object</span><span class="p">:</span> <span class="kt">Decodable</span><span class="o">&gt;</span><span class="p">(</span>
+    <span class="n">from</span> <span class="nv">api</span><span class="p">:</span> <span class="kt"><a href="../Protocols/API.html">API</a></span><span class="p">,</span>
+    <span class="n">promoting</span> <span class="nv">businessErrorTypes</span><span class="p">:</span> <span class="p">[</span><span class="n">any</span> <span class="kt"><a href="../Protocols/BusinessError.html">BusinessError</a></span><span class="o">.</span><span class="k">Type</span><span class="p">]</span> <span class="o">=</span> <span class="p">[])</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="p">[</span><span class="kt">Object</span><span class="p">],</span> <span class="kt"><a href="../Enums/APIError.html">APIError</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>api</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The API</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>businessErrorTypes</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>All types of BusinessError that should be detected</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An object publisher</p>
+                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:14CombineNetwork13APIClientTypePAAE11requestData4from9promoting0A012AnyPublisherVy10Foundation0F0VAA8APIErrorOGAA3API_p_SayAA13BusinessError_pXpGtF"></a>
                     <a name="//apple_ref/swift/Method/requestData(from:promoting:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">requestData(from:<wbr>promoting:<wbr>)</a>
+                    <a class="token" href="#/s:14CombineNetwork13APIClientTypePAAE11requestData4from9promoting0A012AnyPublisherVy10Foundation0F0VAA8APIErrorOGAA3API_p_SayAA13BusinessError_pXpGtF">requestData(from:<wbr>promoting:<wbr>)</a>
                     </code>
                       <span class="declaration-note">
                         Extension method
@@ -353,6 +722,51 @@
                         <p>Request a data</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">requestData</span><span class="p">(</span>
+    <span class="n">from</span> <span class="nv">api</span><span class="p">:</span> <span class="kt"><a href="../Protocols/API.html">API</a></span><span class="p">,</span>
+    <span class="n">promoting</span> <span class="nv">businessErrorTypes</span><span class="p">:</span> <span class="p">[</span><span class="n">any</span> <span class="kt"><a href="../Protocols/BusinessError.html">BusinessError</a></span><span class="o">.</span><span class="k">Type</span><span class="p">]</span> <span class="o">=</span> <span class="p">[])</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">Data</span><span class="p">,</span> <span class="kt"><a href="../Enums/APIError.html">APIError</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>api</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The API</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>businessErrorTypes</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>All types of BusinessError that should be detected</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An object publisher</p>
+                      </div>
                     </section>
                   </div>
                 </li>
@@ -361,8 +775,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2022 <a class="link" href="https://github.com/adamaszhu/CombineNetwork" target="_blank" rel="external noopener">Adamas Zhu</a>. All rights reserved. (Last updated: 2022-11-27)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+          <p>&copy; 2023 <a class="link" href="https://github.com/adamaszhu/CombineNetwork" target="_blank" rel="external noopener">Adamas Zhu</a>. All rights reserved. (Last updated: 2023-04-27)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
     </div>
