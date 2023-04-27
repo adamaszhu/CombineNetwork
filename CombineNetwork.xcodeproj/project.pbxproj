@@ -80,7 +80,6 @@
 		3549E6FF2374FB2F00EA21C9 /* APIClientType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientType.swift; sourceTree = "<group>"; };
 		3549E7012374FB3A00EA21C9 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		3549E7032374FB4B00EA21C9 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
-		C7544E1B3F961AFE60F7644B /* libPods-CombineNetwork.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CombineNetwork.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,7 +149,6 @@
 				3549E6C92374DFB300EA21C9 /* CombineNetwork */,
 				3549E6D42374DFB300EA21C9 /* CombineNetworkTests */,
 				3549E6C82374DFB300EA21C9 /* Products */,
-				FB2D93A43DE0F94A8CABCCC7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -196,14 +194,6 @@
 				287D01F1292B8ECA006DCCBB /* Publisher+Decodable.swift */,
 			);
 			path = Client;
-			sourceTree = "<group>";
-		};
-		FB2D93A43DE0F94A8CABCCC7 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C7544E1B3F961AFE60F7644B /* libPods-CombineNetwork.a */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
