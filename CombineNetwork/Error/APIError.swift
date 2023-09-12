@@ -4,7 +4,7 @@
 /// - date: 19/11/22
 /// - author: Adamas
 public enum APIError: Error {
-    case decoding(detail: String)
+    case decoding(_ error: Error)
     case encoding
     case url
     case network(_ error: NetworkError)
@@ -38,8 +38,8 @@ extension APIError: LocalizedError {
     
     public var errorDescription: String? {
         switch self {
-            case .decoding(let detail):
-                return detail
+            case .decoding(let error):
+                return String(describing: error)
             case .encoding, .url, .other:
                 return String(describing: self)
             case .network(let networkError):
