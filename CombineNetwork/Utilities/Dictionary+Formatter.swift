@@ -16,16 +16,6 @@ internal extension Dictionary {
         }
         .joined(separator: .and)
     }
-
-    /// Convert the dictionary into a json string.
-    var json: String? {
-        if let data = try? JSONSerialization.data(withJSONObject: self,
-                                                  options: .prettyPrinted) {
-            return String(data: data, encoding: .utf8)
-        } else {
-            return nil
-        }
-    }
 }
 
 import Foundation
