@@ -11,6 +11,9 @@ public enum NetworkError: Int, Error {
     /// NSURLErrorTimedOut
     case timeout = -1001
 
+    /// NSURLErrorDomain
+    case domain = -1022
+
     case other = 0
     
     /// Convert an error returned by the URLSession into a NetworkError.
